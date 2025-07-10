@@ -118,25 +118,13 @@ export default function Sidebar() {
       )}
     >
       {/* Logo */}
-      <div className="flex items-center justify-center h-24 relative">
+      <div className="flex items-center justify-center h-16 border-b border-gray-200 relative">
         {!isCollapsed && (
-          <Image
-            src="/images/logo.png"
-            alt="DairySense"
-            width={150}
-            height={150}
-            className="object-contain"
-          />
+          <Link href="/">
+            <span className="text-3xl font-bold">DairySense</span>
+          </Link>
         )}
-        {isCollapsed && (
-          <Image
-            src="/images/logo.png"
-            alt="DairySense"
-            width={100}
-            height={100}
-            className="object-contain "
-          />
-        )}
+
         {/* Collapse Button */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
@@ -151,7 +139,7 @@ export default function Sidebar() {
       </div>
 
       {/* Menü */}
-      <nav className="flex-1 px-3 py-4">
+      <nav className="flex-1 px-3 py-2">
         <ul className="space-y-1">
           {navItems.map((item) => {
             const Icon = item.icon;
