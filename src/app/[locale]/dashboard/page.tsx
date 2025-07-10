@@ -3,7 +3,7 @@ import Rightbar from "./components/Rightbar";
 
 export default function DashboardPage() {
   return (
-    <div className="flex">
+    <div className="flex h-screen w-full">
       <Sidebar />
       <Rightbar />
     </div>

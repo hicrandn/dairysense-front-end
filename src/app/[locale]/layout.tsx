@@ -32,7 +32,9 @@ export default async function LocaleLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <div className="flex h-screen">{children}</div>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
