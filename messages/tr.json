@@ -1,0 +1,11 @@
+{
+  "HomePage": {
+    "title": "Merhaba dünya!",
+    "about": "Hakkında sayfasına git"
+  },
+  "Navigation": {
+    "home": "Ana Sayfa",
+    "dashboard": "Kontrol Paneli",
+    "settings": "Ayarlar"
+  }
+}
