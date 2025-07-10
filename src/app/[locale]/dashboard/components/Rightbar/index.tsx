@@ -7,7 +7,7 @@ export default function Rightbar() {
   return (
     <aside
       className={clsx(
-        "hidden lg:flex flex-col h-screen bg-white border-l rounded-tl-2xl rounded-bl-2xl w-64 p-0 fixed right-0 top-0 z-30"
+        "hidden lg:flex flex-col h-screen bg-white border-l  w-64 p-0 right-0 top-0 z-30 "
       )}
     >
       {/* Ana Container */}
