@@ -33,7 +33,6 @@ export default function DashboardPage() {
         className={`flex flex-col flex-1 ${isMobile ? "ml-16" : ""} min-h-0`}
       >
         <Header onMenuClick={handleMenuClick} />
-        {/* Overview ve Dropdown */}
 
         <main className="flex-1 p-4 sm:p-4 lg:p-6 overflow-auto">
           <div className="flex items-center justify-between mb-4 lg:mb-6">

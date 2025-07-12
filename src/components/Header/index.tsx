@@ -103,7 +103,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
             onClick={() => setIsWeatherOpen(!isWeatherOpen)}
             className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200"
           >
-            <Cloudy className="w-5 h-5 text-gray-500" />
+            <Cloudy className="w-5 h-5 text-blue-500" />
           </button>
           {isWeatherOpen && (
             <div

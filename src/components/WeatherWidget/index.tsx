@@ -101,7 +101,6 @@ const WeatherWidget = () => {
         </CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        {/* Üst kısım: Sıcaklık ve hava durumu ikonu */}
         <div className="flex items-center justify-center gap-4">
           {getWeatherIcon(weather.icon)}
           <div className="text-center">
@@ -120,21 +119,21 @@ const WeatherWidget = () => {
 
         {/* Alt kısım: Diğer hava durumu bilgileri */}
         <div className="grid grid-cols-1 gap-2 text-xs text-gray-600">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
               <Thermometer className="w-3 h-3" />
               <span>Hissedilen</span>
             </div>
             <span>{Math.round(weather.feelsLike)}°C</span>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-1">
               <Droplets className="w-3 h-3" />
               <span>Nem</span>
             </div>
             <span>{weather.humidity}%</span>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-1">
               <Wind className="w-3 h-3" />
               <span>Rüzgar</span>

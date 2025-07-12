@@ -30,7 +30,7 @@ export async function getWeatherData(
     if (lat && lon) {
       url += `&lat=${lat}&lon=${lon}`;
     } else {
-      url += `&q=${encodeURIComponent(city || "Istanbul")}`;
+      url += `&q=${encodeURIComponent(city || "Bursa")}`;
     }
 
     const response = await fetch(url, {
