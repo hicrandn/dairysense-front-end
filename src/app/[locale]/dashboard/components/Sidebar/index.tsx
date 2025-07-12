@@ -15,7 +15,7 @@ export default function Sidebar() {
   // Mobil cihazlarda sadece ikonların göründüğü sidebar
   if (isMobile) {
     return (
-      <aside className=" h-screen fixed top-0 left-0  bg-white border-r z-50 w-20 flex flex-col">
+      <aside className="fixed top-0 left-0 bg-white border-r z-50 w-20 flex flex-col">
         {/* Logo */}
         <div className="flex items-center justify-center h-16 border-b border-gray-200">
           <span className="text-lg font-bold">DS</span>
@@ -65,7 +65,7 @@ export default function Sidebar() {
 
   // Desktop sidebar - responsive genişlik
   return (
-    <aside className="flex flex-col h-screen bg-white border-r w-48 lg:w-56 xl:w-64">
+    <aside className="flex flex-col h-screen bg-white border-r w-48 lg:w-56 xl:w-64 flex-shrink-0">
       {/* Logo */}
       <div className="flex items-center justify-center h-16 border-b border-gray-200">
         <Link href="/">

@@ -24,11 +24,11 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex h-screen w-full">
       <Sidebar />
       <div className={`flex flex-col flex-1 ${isMobile ? "ml-20" : ""}`}>
         <Header onMenuClick={handleMenuClick} />
-        <main className="flex-1 bg-gray-50 p-4 sm:p-6 lg:p-10 h-full">
+        <main className="flex-1 bg-gray-50 p-4 sm:p-6 lg:p-10 ">
           {/* Card grid başlangıcı */}
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
             {/* Son 24 Saat Süt */}

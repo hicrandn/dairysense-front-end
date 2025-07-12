@@ -8,11 +8,18 @@ import {
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
+  Cell,
 } from "recharts";
 import React from "react";
 
+interface BarChartData {
+  name: string;
+  value: number;
+  color: string;
+}
+
 interface BarChartProps {
-  data: Array<{ name: string; value: number }>;
+  data: BarChartData[];
   title?: string;
 }
 
@@ -51,7 +58,16 @@ const BarChart: React.FC<BarChartProps> = ({ data, title }) => {
             }}
             labelStyle={{ fontSize: 13 }}
           />
-          <Bar dataKey="value" fill="#7dd3fc" radius={[8, 8, 0, 0]} />
+          <Bar
+            dataKey="value"
+            radius={[8, 8, 0, 0]}
+            barSize={40}
+            activeBar={false}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Bar>
         </ReBarChart>
       </ResponsiveContainer>
     </div>

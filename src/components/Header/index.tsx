@@ -24,7 +24,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <header className="h-14 sm:h-16 flex items-center justify-between px-2 sm:px-4 bg-white border-b relative z-40 w-full">
+    <header className="h-16  flex items-center justify-between px-2 md:px-4 bg-white border-b relative z-40 w-full">
       {/* Sol kısım - Sadece ikon ve breadcrumb */}
       <div className="flex items-center gap-2 flex-shrink-0 min-w-0">
         {/* Mobil menü butonu */}
