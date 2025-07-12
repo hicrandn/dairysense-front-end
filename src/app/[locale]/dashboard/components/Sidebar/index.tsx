@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { User2 } from "lucide-react";
 import { navItems } from "@/constants";
 import clsx from "clsx";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -54,9 +54,10 @@ export default function Sidebar() {
 
         {/* Kullanıcı - Sadece İkon */}
         <div className="flex items-center justify-center p-4 border-t bg-white">
-          <div className="bg-gray-200 rounded-full p-1">
-            <User2 className="w-5 h-5 text-gray-500" />
-          </div>
+          <Avatar className="w-8 h-8">
+            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarFallback>FA</AvatarFallback>
+          </Avatar>
         </div>
       </aside>
     );
@@ -105,10 +106,11 @@ export default function Sidebar() {
       </nav>
 
       {/* Kullanıcı */}
-      <div className="flex items-center gap-3 p-4 hover:bg-blue-50 transition-colors group">
-        <div className="bg-white rounded-full p-1.5 shadow-sm">
-          <User2 className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" />
-        </div>
+      <div className="flex items-center gap-3 p-4 hover:bg-blue-50 transition-colors group mt-auto">
+        <Avatar className="w-8 h-8">
+          <AvatarImage src="https://github.com/shadcn.png" />
+          <AvatarFallback>FA</AvatarFallback>
+        </Avatar>
         <div className="flex flex-col">
           <span className="text-sm font-medium text-gray-900">
             Vet. Furkan Acar

@@ -3,64 +3,95 @@ import Sidebar from "./components/Sidebar";
 import Rightbar from "./components/Rightbar";
 import Header from "@/components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Chart from "@/components/ui/chart";
+import { TrendingUp, TrendingDown } from "lucide-react";
 
 export default function DashboardPage() {
   const isMobile = useIsMobile();
+  const [isRightbarVisible, setIsRightbarVisible] = useState(false);
+
+  const handleMenuClick = () => {
+    setIsRightbarVisible(!isRightbarVisible);
+  };
+
+  const handleRightbarClose = () => {
+    setIsRightbarVisible(false);
+  };
 
   return (
     <div className="flex h-full w-full">
       <Sidebar />
       <div className={`flex flex-col flex-1 ${isMobile ? "ml-20" : ""}`}>
-        <Header />
+        <Header onMenuClick={handleMenuClick} />
         <main className="flex-1 bg-gray-50 p-10 h-full">
           {/* Card grid başlangıcı */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {/* Son 24 Saat Süt */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Son 24 Saat Süt</CardTitle>
-                <CardDescription>+11.01%</CardDescription>
+            <Card className="bg-[#eef0fd]">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-base font-medium text-gray-700">
+                  Son 24 Saat Süt
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <span className="text-3xl font-bold">7,265</span>
+              <CardContent className="flex flex-col gap-2">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl font-bold text-gray-900">
+                    7,265
+                  </span>
+                  <span className="text-xs font-medium">+11.01%</span>
+                  <TrendingUp className="w-5 h-5 text-black" />
+                </div>
               </CardContent>
             </Card>
             {/* Dün Toplam Süt */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Dün Toplam Süt</CardTitle>
-                <CardDescription>-0.03%</CardDescription>
+            <Card className="bg-blue-100">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-base font-medium text-gray-700">
+                  Dün Toplam Süt
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <span className="text-3xl font-bold">3,671</span>
+              <CardContent className="flex flex-col gap-2">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl font-bold text-gray-900">
+                    3,671
+                  </span>
+                  <span className="text-xs font-medium">-0.03%</span>
+                  <TrendingDown className="w-5 h-5 text-black" />
+                </div>
               </CardContent>
             </Card>
             {/* Sağlanan İnek Sayısı */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Sağlanan İnek Sayısı</CardTitle>
-                <CardDescription>+15.03%</CardDescription>
+            <Card className="bg-[#eef0fd]">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-base font-medium text-gray-700">
+                  Sağılan İnek Sayısı
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <span className="text-3xl font-bold">156</span>
+              <CardContent className="flex flex-col gap-2">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl font-bold text-gray-900">156</span>
+                  <span className="text-xs font-medium">+15.03%</span>
+                  <TrendingUp className="w-5 h-5 text-black" />
+                </div>
               </CardContent>
             </Card>
             {/* Ortalama Süt */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Ortalama Süt</CardTitle>
-                <CardDescription>+6.08%</CardDescription>
+            <Card className="bg-blue-100">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-base font-medium text-gray-700">
+                  Ortalama Süt
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <span className="text-3xl font-bold">2,318</span>
+              <CardContent className="flex flex-col gap-2">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl font-bold text-gray-900">
+                    2,318
+                  </span>
+                  <span className="text-xs font-medium">+6.08%</span>
+                  <TrendingUp className="w-5 h-5 text-black" />
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -69,8 +100,7 @@ export default function DashboardPage() {
           {/* Chart ve Çiftlik Başarı Durumu */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             {/* Chart alanı */}
-            <div className="col-span-2 bg-white rounded-xl shadow-sm p-6 flex flex-col">
-              <h2 className="text-lg font-semibold mb-4">Toplam Süt</h2>
+            <div className="col-span-2 rounded-xl shadow-sm p-4 flex flex-col">
               <Chart />
             </div>
             {/* Çiftlik Başarı Durumu alanı */}
@@ -140,7 +170,7 @@ export default function DashboardPage() {
           </div>
         </main>
       </div>
-      <Rightbar />
+      <Rightbar isVisible={isRightbarVisible} onClose={handleRightbarClose} />
     </div>
   );
 }

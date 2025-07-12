@@ -1,57 +1,72 @@
 "use client";
 import React from "react";
 
-import { Menu, Star, Sun, Clock, Bell, Layout, Search, X } from "lucide-react";
+import {
+  Menu,
+  Star,
+  Sun,
+  Clock,
+  Bell,
+  PanelLeftDashed,
+  Search,
+  X,
+} from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 
-const Header = () => {
+interface HeaderProps {
+  onNotificationClick?: () => void;
+  onMenuClick?: () => void;
+}
+
+const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
   const isMobile = useIsMobile();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <header className="h-16 flex items-center justify-between px-4 lg:px-6 bg-white border-b shadow-sm relative z-40">
-      {/* Sol kısım - Flex ile esnek */}
-      <div className="flex items-center gap-2 lg:gap-3 flex-1 min-w-0">
-        {/* Mobil menü butonu - sadece mobilde görünür */}
+    <header className="h-14 sm:h-16 flex items-center justify-between px-2 sm:px-4 bg-white border-b relative z-40 w-full">
+      {/* Sol kısım - Sadece ikon ve breadcrumb */}
+      <div className="flex items-center gap-2 flex-shrink-0 min-w-0">
+        {/* Mobil menü butonu */}
         {isMobile && (
-          <button className="p-1 hover:bg-gray-100 rounded-md transition-colors">
+          <button
+            onClick={onMenuClick}
+            className="p-2 hover:bg-gray-100 rounded-md transition-colors sm:hidden"
+          >
             <Menu className="w-5 h-5 text-gray-500" />
           </button>
         )}
-
-        {/* Desktop breadcrumb */}
-        {!isMobile && (
-          <>
-            <Star className="w-5 h-5 text-gray-500 flex-shrink-0" />
-            <span className="text-gray-400 mx-2 text-sm lg:text-base">
-              Kontrol Paneli
-            </span>
-            <span className="text-gray-300 text-sm lg:text-base">/</span>
-            <span className="text-gray-700 font-medium text-sm lg:text-base">
-              Varsayılan
-            </span>
-          </>
-        )}
+        {/* Sol başa Layout ikonu - sadece masaüstü */}
+        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
+          <PanelLeftDashed className="w-5 h-5 text-gray-500" />
+        </button>
+        {/* Breadcrumb */}
+        <Star className="w-5 h-5 text-gray-500 flex-shrink-0" />
+        <span className="text-gray-400 text-sm font-normal hidden sm:inline">
+          Kontrol Paneli
+        </span>
+        <span className="text-gray-300 text-sm hidden sm:inline">/</span>
+        <span className="text-gray-700 font-medium text-sm truncate">
+          Varsayılan
+        </span>
       </div>
 
-      {/* Orta kısım - Arama (mobilde tam genişlik) */}
-      <div className={`flex items-center ${isMobile ? "flex-1 mx-2" : "mx-4"}`}>
+      {/* Orta kısım - Arama */}
+      <div className="flex-1 flex justify-center mx-2">
         {isMobile ? (
-          // Mobil arama - toggle ile açılır
-          <div className="flex-1 relative">
+          <div className="w-full">
             {isSearchOpen ? (
-              <div className="flex items-center bg-gray-100 rounded-md px-3 py-1">
-                <Search className="w-4 h-4 text-gray-400 mr-2" />
+              <div className="flex items-center bg-gray-100 rounded-md px-3 py-2">
+                <Search className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" />
                 <input
                   type="text"
                   placeholder="İnek Ara"
-                  className="flex-1 bg-transparent text-sm outline-none placeholder:text-gray-400"
+                  className="flex-1 bg-transparent text-base outline-none placeholder:text-gray-400 min-w-0"
                   autoFocus
                 />
                 <button
                   onClick={() => setIsSearchOpen(false)}
-                  className="ml-2 p-1 hover:bg-gray-200 rounded"
+                  className="ml-2 p-1.5 hover:bg-gray-200 rounded flex-shrink-0"
                 >
                   <X className="w-4 h-4 text-gray-400" />
                 </button>
@@ -61,50 +76,45 @@ const Header = () => {
                 onClick={() => setIsSearchOpen(true)}
                 className="w-full flex items-center justify-center bg-gray-100 rounded-md px-3 py-2 text-gray-400 hover:bg-gray-200 transition-colors"
               >
-                <Search className="w-4 h-4 mr-2" />
-                <span className="text-sm">Ara</span>
+                <Search className="w-4 h-4 mr-2 flex-shrink-0" />
+                <span className="text-base">Ara</span>
               </button>
             )}
           </div>
         ) : (
-          // Desktop arama
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+          <div className="relative w-full max-w-xs">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
               placeholder="İnek Ara"
-              className="bg-gray-100 rounded-md pl-10 pr-3 py-1.5 text-sm outline-none placeholder:text-gray-400 w-48 lg:w-64 focus:bg-white border border-transparent focus:border-gray-300 transition-all"
+              className="bg-gray-100 rounded-md pl-10 pr-3 py-2 text-sm outline-none placeholder:text-gray-400 w-full focus:bg-white border border-transparent focus:border-gray-300 transition-all"
             />
           </div>
         )}
       </div>
 
-      {/* Sağ kısım - Responsive icon grubu */}
-      <div className="flex items-center gap-2 lg:gap-4 flex-shrink-0">
-        {/* Desktop'ta tüm ikonlar, mobilde sadece önemli olanlar */}
-        {!isMobile && (
-          <>
-            <button className="p-2 hover:bg-gray-100 rounded-md transition-colors">
-              <Sun className="w-5 h-5 text-gray-500" />
-            </button>
-            <button className="p-2 hover:bg-gray-100 rounded-md transition-colors">
-              <Clock className="w-5 h-5 text-gray-500" />
-            </button>
-          </>
-        )}
-
+      {/* Sağ kısım - Sadece ikonlar */}
+      <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+        {/* Sadece masaüstünde görünür */}
+        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
+          <Sun className="w-5 h-5 text-gray-500" />
+        </button>
+        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
+          <Clock className="w-5 h-5 text-gray-500" />
+        </button>
         {/* Bildirimler - her zaman görünür */}
-        <button className="relative p-2 hover:bg-gray-100 rounded-md transition-colors">
+        <button
+          onClick={onNotificationClick}
+          className="relative p-2 hover:bg-gray-100 rounded-md transition-colors"
+        >
           <Bell className="w-5 h-5 text-gray-500" />
-          {/* Bildirim badge'i */}
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
             3
           </span>
         </button>
-
-        {/* Layout - her zaman görünür */}
-        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors">
-          <Layout className="w-5 h-5 text-gray-500" />
+        {/* Layout ikonu - sadece masaüstünde görünür */}
+        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
+          <PanelLeftDashed className="w-5 h-5 text-gray-500" />
         </button>
       </div>
     </header>

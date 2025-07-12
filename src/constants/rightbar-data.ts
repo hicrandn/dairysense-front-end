@@ -1,4 +1,4 @@
-import { Globe, ArrowRight, Bug } from "lucide-react";
+import { Globe, ArrowRight, Bug, User } from "lucide-react";
 
 export const notifications = [
   { icon: Bug, text: "Veri Girişi Yapılmamış", time: "Bugün" },
@@ -17,18 +17,18 @@ export const notifications = [
 
 export const actions = [
   {
-    icon: Globe,
+    icon: User,
     text: "Gebelik Teşhisi : 24 Numara",
     time: "2 saat önce",
   },
   {
-    icon: Globe,
+    icon: User,
     text: "Kuruya ayrılış : 242 Numara",
     time: "3 saat önce",
   },
-  { icon: Globe, text: "Düşük bildirimi : 2402", time: "12 saat önce" },
-  { icon: Globe, text: "1 Yeni Hayvan Eklendi : 2991", time: "Dün" },
-  { icon: Globe, text: "Sürüden Çıkarıldı : 203", time: "4 gün önce" },
+  { icon: User, text: "Düşük bildirimi : 2402", time: "12 saat önce" },
+  { icon: User, text: "1 Yeni Hayvan Eklendi : 2991", time: "Dün" },
+  { icon: User, text: "Sürüden Çıkarıldı : 203", time: "4 gün önce" },
 ];
 
 export const doctors = [
