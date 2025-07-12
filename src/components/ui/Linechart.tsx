@@ -23,31 +23,39 @@ const data = [
 
 export default function Chart() {
   return (
-    <div className="w-full h-full min-h-[320px] rounded-xl  ">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
-        <div className="flex flex-row items-center gap-4">
-          <h3 className="text-lg font-bold text-gray-900">Toplam Süt</h3>
-          <span className="text-sm text-gray-400 font-normal">
-            Sağılan Hayvan Sayısı
-          </span>
-          <span className="mx-2 text-gray-800">|</span>
-          <span className="text-sm text-gray-400 font-normal">
-            Sağım Süresi
-          </span>
-        </div>
-        <div className="flex items-center gap-4 ml-auto">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-gray-900 rounded-full" />
-            <span className="text-sm text-gray-700">24 Saat</span>
+    <div className="w-full h-full min-h-[320px] rounded-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+          <h3 className="text-base sm:text-sm font-bold text-gray-900">
+            Toplam Süt
+          </h3>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+            <span className="text-xs sm:text-sm xl:text-xs 2xl:text-xs text-gray-400 font-normal">
+              Sağılan Hayvan Sayısı
+            </span>
+            <span className="hidden sm:inline mx-2 text-gray-800">|</span>
+            <span className="text-xs sm:text-sm xl:text-xs 2xl:text-xs text-gray-400 font-normal">
+              Sağım Süresi
+            </span>
           </div>
-          <div className="flex items-center gap-2">
+        </div>
+        <div className="flex items-center gap-2 sm:gap-4 ml-auto">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <div className="w-2 h-2 bg-gray-900 rounded-full" />
+            <span className="sm:text-sm xl:text-xs 2xl:text-xs text-gray-700">
+              24 Saat
+            </span>
+          </div>
+          <div className="flex items-center gap-1 sm:gap-2">
             <div className="w-2 h-2 bg-blue-300 rounded-full" />
-            <span className="text-sm text-blue-400">10 Gün Ortalama</span>
+            <span className="sm:text-sm xl:text-xs 2xl:text-xs text-blue-300">
+              10 Gün Ortalama
+            </span>
           </div>
         </div>
       </div>
 
-      <div className="w-full h-[280px]  ">
+      <div className="w-full h-[280px]">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={data}
@@ -58,7 +66,7 @@ export default function Chart() {
               dataKey="name"
               axisLine={false}
               tickLine={false}
-              tick={{ fontSize: 13, fill: "#B0B0B0", fontWeight: 500 }}
+              tick={{ fontSize: 12, fill: "#B0B0B0", fontWeight: 500 }}
               padding={{ left: 20, right: 10 }}
             />
             <YAxis
@@ -68,19 +76,19 @@ export default function Chart() {
               tickFormatter={(value) =>
                 value === 0 ? "0" : `${value / 1000}K`
               }
-              tick={{ fontSize: 13, fill: "#B0B0B0", fontWeight: 500 }}
+              tick={{ fontSize: 12, fill: "#B0B0B0", fontWeight: 500 }}
               padding={{ top: 20, bottom: 10 }}
             />
             <Tooltip
               contentStyle={{
                 borderRadius: 4,
-                fontSize: 13,
+                fontSize: 12,
                 backgroundColor: "#fff",
                 border: "1px solid #e0e0e0",
                 boxShadow: "none",
                 padding: 8,
               }}
-              labelStyle={{ fontSize: 13 }}
+              labelStyle={{ fontSize: 12 }}
             />
             <defs>
               <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">

@@ -10,8 +10,8 @@ export const weeklyMilkProduction = [
 
 // PieChart için örnek veri
 export const cowInventory = [
-  { name: "Tohumlanmamış", value: 16.1, color: "#A5A6F6" },
   { name: "Tohumlanmış", value: 22.8, color: "#9EE7DF" },
-  { name: "Gebe", value: 42.8, color: "#111111" },
   { name: "Kuru", value: 18.3, color: "#8FE3C3" },
+  { name: "Tohumlanmamış", value: 16.1, color: "#A5A6F6" },
+  { name: "Gebe", value: 42.8, color: "#111111" },
 ];

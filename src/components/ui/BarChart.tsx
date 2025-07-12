@@ -61,7 +61,7 @@ const BarChart: React.FC<BarChartProps> = ({ data, title }) => {
           <Bar
             dataKey="value"
             radius={[8, 8, 0, 0]}
-            barSize={40}
+            barSize={30}
             activeBar={false}
           >
             {data.map((entry, index) => (
