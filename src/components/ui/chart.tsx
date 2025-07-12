@@ -23,7 +23,7 @@ const data = [
 
 export default function Chart() {
   return (
-    <div className="w-full h-full min-h-[320px] rounded-xl p-4 ">
+    <div className="w-full h-full min-h-[320px] rounded-xl  ">
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
         <div className="flex flex-row items-center gap-4">
           <h3 className="text-lg font-bold text-gray-900">Toplam Süt</h3>
@@ -69,6 +69,7 @@ export default function Chart() {
                 value === 0 ? "0" : `${value / 1000}K`
               }
               tick={{ fontSize: 13, fill: "#B0B0B0", fontWeight: 500 }}
+              padding={{ top: 20, bottom: 10 }}
             />
             <Tooltip
               contentStyle={{

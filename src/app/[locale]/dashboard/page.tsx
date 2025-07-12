@@ -7,6 +7,9 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Chart from "@/components/ui/chart";
 import { TrendingUp, TrendingDown } from "lucide-react";
+import BarChart from "@/components/ui/BarChart";
+import PieChart from "@/components/ui/PieChart";
+import { weeklyMilkProduction, cowInventory } from "@/constants/chart-data";
 
 export default function DashboardPage() {
   const isMobile = useIsMobile();
@@ -191,6 +194,15 @@ export default function DashboardPage() {
                 </ul>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Yeni Chartlar: BarChart ve PieChart */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 lg:mb-8 ">
+            <BarChart
+              title="Haftalık Süt Üretimi"
+              data={weeklyMilkProduction}
+            />
+            <PieChart title="İnek Envanteri" data={cowInventory} />
           </div>
         </main>
       </div>
