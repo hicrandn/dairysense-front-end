@@ -63,13 +63,13 @@ export default function Sidebar() {
     );
   }
 
-  // Desktop sidebar - sabit genişlik
+  // Desktop sidebar - responsive genişlik
   return (
-    <aside className="flex flex-col h-screen bg-white border-r  w-64">
+    <aside className="flex flex-col h-screen bg-white border-r w-48 lg:w-56 xl:w-64">
       {/* Logo */}
       <div className="flex items-center justify-center h-16 border-b border-gray-200">
         <Link href="/">
-          <span className="text-3xl font-bold">DairySense</span>
+          <span className="text-2xl lg:text-3xl font-bold">DairySense</span>
         </Link>
       </div>
 

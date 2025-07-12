@@ -14,7 +14,7 @@ export default function Rightbar({ isVisible = true, onClose }: RightbarProps) {
       {/* Desktop Rightbar */}
       <aside
         className={clsx(
-          "hidden lg:grid grid-rows-[auto_1fr_auto] h-screen bg-white border-l w-64 p-0 right-0 top-0 z-30"
+          "hidden lg:grid grid-rows-[auto_1fr_auto] h-screen bg-white border-l w-48 lg:w-56 xl:w-64 p-0 right-0 top-0 z-30"
         )}
       >
         {/* Bildirimler Container */}
