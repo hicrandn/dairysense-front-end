@@ -1,7 +1,7 @@
 "use client";
 import Sidebar from "./components/Sidebar";
 import Rightbar from "./components/Rightbar";
-import Header from "@/components/Header";
+import Header from "./components/Header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

@@ -30,10 +30,7 @@ const BarChart: React.FC<BarChartProps> = ({ data, title }) => {
         <h3 className="text-lg font-bold mb-4 text-gray-900">{title}</h3>
       )}
       <ResponsiveContainer width="100%" height={280}>
-        <ReBarChart
-          data={data}
-          margin={{ top: 10, right: 30, left: 20, bottom: 10 }}
-        >
+        <ReBarChart data={data} margin={{ top: 10, right: 10 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#f5f5f5" />
           <XAxis
             dataKey="name"

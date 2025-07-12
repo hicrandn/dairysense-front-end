@@ -24,33 +24,41 @@ const data = [
 export default function Chart() {
   return (
     <div className="w-full h-full min-h-[320px] rounded-xl">
-      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-3 sm:mb-4">
-        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-          <h3 className="text-base sm:text-sm font-bold text-gray-900">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mb-2 sm:mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-4 w-full">
+          <h3 className="text-sm sm:text-base font-bold text-gray-900">
             Toplam Süt
           </h3>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
-            <span className="text-xs sm:text-sm xl:text-xs 2xl:text-xs text-gray-400 font-normal">
+          <div className="flex flex-row items-center gap-2 sm:flex-row sm:items-center sm:gap-2">
+            <span className="text-xs text-gray-400 font-normal">
               Sağılan Hayvan Sayısı
             </span>
-            <span className="hidden sm:inline mx-2 text-gray-800">|</span>
-            <span className="text-xs sm:text-sm xl:text-xs 2xl:text-xs text-gray-400 font-normal">
+            <span className="mx-2 text-gray-800">|</span>
+            <span className="text-xs text-gray-400 font-normal">
               Sağım Süresi
             </span>
           </div>
-        </div>
-        <div className="flex items-center gap-2 sm:gap-4 ml-auto">
-          <div className="flex items-center gap-1 sm:gap-2">
-            <div className="w-2 h-2 bg-gray-900 rounded-full" />
-            <span className="sm:text-sm xl:text-xs 2xl:text-xs text-gray-700">
-              24 Saat
-            </span>
+          {/* Mobilde legend burada, sm ve üstünde gizli */}
+          <div className="flex items-center gap-2 mt-1 sm:hidden">
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-gray-900 rounded-full" />
+              <span className="text-xs text-gray-700">24 Saat</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-blue-300 rounded-full" />
+              <span className="text-xs text-blue-300">10 Gün Ortalama</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1 sm:gap-2">
+        </div>
+        {/* Sadece sm ve üstünde legend burada */}
+        <div className="hidden sm:flex items-center gap-4 ml-auto">
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 bg-gray-900 rounded-full" />
+            <span className="text-xs text-gray-700">24 Saat</span>
+          </div>
+          <div className="flex items-center gap-1">
             <div className="w-2 h-2 bg-blue-300 rounded-full" />
-            <span className="sm:text-sm xl:text-xs 2xl:text-xs text-blue-300">
-              10 Gün Ortalama
-            </span>
+            <span className="text-xs text-blue-300">10 Gün Ortalama</span>
           </div>
         </div>
       </div>

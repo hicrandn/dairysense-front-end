@@ -37,7 +37,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, value, onChange }) => {
         <ChevronDown className="-mr-1 ml-2 h-5 w-5" />
       </button>
       {open && (
-        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-opacity-5 focus:outline-none z-10">
+        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-lg shadow-lg bg-white  ring-opacity-5 focus:outline-none z-10">
           <div className="py-1">
             {options.map((option) => (
               <button

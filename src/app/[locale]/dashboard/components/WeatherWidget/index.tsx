@@ -62,7 +62,7 @@ const WeatherWidget = () => {
 
   if (loading) {
     return (
-      <Card className="bg-gradient-to-br from-blue-50 to-blue-100 min-h-[150px] min-w-[200px] animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
+      <Card className="bg-gradient-to-br from-blue-50 to-blue-100 min-h-[150px] min-w-[250px] animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
         <CardContent className="p-4">
           <div className="animate-pulse space-y-3">
             <div className="flex items-center gap-2">
@@ -79,7 +79,7 @@ const WeatherWidget = () => {
 
   if (error || !weather) {
     return (
-      <Card className="bg-gradient-to-br from-red-50 to-red-100 min-h-[120px] animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
+      <Card className="bg-gradient-to-br from-red-50 to-red-100 min-h-[120px] min-w-[250px] animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
         <CardContent className="p-4">
           <div className="flex items-center gap-2 text-red-600">
             <Cloud className="w-5 h-5" />
@@ -93,7 +93,7 @@ const WeatherWidget = () => {
   }
 
   return (
-    <Card className="bg-gradient-to-br from-blue-50 to-blue-100 min-h-[150px] animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
+    <Card className="bg-gradient-to-br from-blue-50 to-blue-100 min-h-[150px] min-w-[250px] animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
       <CardHeader className="pb-2">
         <CardTitle className="text-xs sm:text-sm lg:text-sm font-medium text-gray-700 flex items-center gap-1">
           <MapPin className="w-3 h-3" />

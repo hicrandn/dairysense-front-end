@@ -4,7 +4,7 @@ import React from "react";
 import {
   Menu,
   Star,
-  Clock,
+  ClockFading,
   Bell,
   PanelLeftDashed,
   Search,
@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
-import WeatherWidget from "@/components/WeatherWidget";
+import WeatherWidget from "@/app/[locale]/dashboard/components/WeatherWidget";
 
 interface HeaderProps {
   onNotificationClick?: () => void;
@@ -117,7 +117,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
           )}
         </div>
         <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
-          <Clock className="w-5 h-5 text-gray-500" />
+          <ClockFading className="w-5 h-5 text-gray-500" />
         </button>
         {/* Bildirimler - her zaman görünür */}
         <button
