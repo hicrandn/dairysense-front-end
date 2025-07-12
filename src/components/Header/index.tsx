@@ -54,16 +54,16 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
       </div>
 
       {/* Orta kısım - Arama */}
-      <div className="flex-1 flex justify-center mx-2">
+      <div className="flex-1 flex justify-end mx-2">
         {isMobile ? (
           <div className="w-full max-w-sm">
             {isSearchOpen ? (
-              <div className="flex items-center bg-gray-100 rounded-md px-3 py-2 animate-in slide-in-from-top-2 duration-300 ease-out">
-                <Search className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" />
+              <div className="flex items-center bg-gray-100 rounded-md px-2 py-2 animate-in slide-in-from-top-2 duration-300 ease-out">
+                <Search className=" text-gray-400 flex-shrink-0" />
                 <input
                   type="text"
                   placeholder="İnek Ara"
-                  className="flex-1 bg-transparent text-base outline-none placeholder:text-gray-400 min-w-0"
+                  className="flex-1 bg-transparent text-sm outline-none placeholder:text-gray-400 min-w-0"
                   autoFocus
                 />
                 <button

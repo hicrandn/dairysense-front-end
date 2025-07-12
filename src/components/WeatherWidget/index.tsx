@@ -39,7 +39,7 @@ const WeatherWidget = () => {
 
   const getWeatherIcon = (iconCode: string) => {
     if (iconCode.includes("01"))
-      return <Sun className="w-6 h- text-yellow-500" />;
+      return <Sun className="w-6 h-6 text-yellow-500" />;
     if (
       iconCode.includes("02") ||
       iconCode.includes("03") ||
@@ -62,7 +62,7 @@ const WeatherWidget = () => {
 
   if (loading) {
     return (
-      <Card className="bg-gradient-to-br from-blue-50 to-blue-100 min-h-[120px] animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
+      <Card className="bg-gradient-to-br from-blue-50 to-blue-100 min-h-[150px] min-w-[200px] animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
         <CardContent className="p-4">
           <div className="animate-pulse space-y-3">
             <div className="flex items-center gap-2">
@@ -100,34 +100,46 @@ const WeatherWidget = () => {
           {weather.city}, {weather.country}
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <CardContent className="flex flex-col gap-4">
+        {/* Üst kısım: Sıcaklık ve hava durumu ikonu */}
+        <div className="flex items-center justify-center gap-4">
           {getWeatherIcon(weather.icon)}
-          <div>
+          <div className="text-center">
             <div
-              className={`text-lg sm:text-xl md:text-xl lg:text-2xl font-bold ${getTemperatureColor(
+              className={`text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-bold ${getTemperatureColor(
                 weather.temp
               )}`}
             >
               {Math.round(weather.temp)}°C
             </div>
-            <div className="text-xs text-gray-600 capitalize">
+            <div className="text-sm text-gray-600 capitalize">
               {weather.description}
             </div>
           </div>
         </div>
-        <div className="text-right text-xs text-gray-600 space-y-1">
-          <div className="flex items-center gap-1">
-            <Thermometer className="w-3 h-3" />
-            <span>Hissedilen: {Math.round(weather.feelsLike)}°C</span>
+
+        {/* Alt kısım: Diğer hava durumu bilgileri */}
+        <div className="grid grid-cols-1 gap-2 text-xs text-gray-600">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1">
+              <Thermometer className="w-3 h-3" />
+              <span>Hissedilen</span>
+            </div>
+            <span>{Math.round(weather.feelsLike)}°C</span>
           </div>
-          <div className="flex items-center gap-1">
-            <Droplets className="w-3 h-3" />
-            <span>Nem: {weather.humidity}%</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1">
+              <Droplets className="w-3 h-3" />
+              <span>Nem</span>
+            </div>
+            <span>{weather.humidity}%</span>
           </div>
-          <div className="flex items-center gap-1">
-            <Wind className="w-3 h-3" />
-            <span>Rüzgar: {weather.windSpeed} m/s</span>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1">
+              <Wind className="w-3 h-3" />
+              <span>Rüzgar</span>
+            </div>
+            <span>{weather.windSpeed} m/s</span>
           </div>
         </div>
       </CardContent>
