@@ -15,7 +15,7 @@ export default function Sidebar() {
   // Mobil cihazlarda sadece ikonların göründüğü sidebar
   if (isMobile) {
     return (
-      <aside className="fixed top-0 left-0 bg-white border-r z-50 w-20  flex flex-col h-screen">
+      <aside className="fixed top-0 left-0 bg-white border-r z-50 w-16  flex flex-col h-screen">
         {/* Logo */}
         <div className="flex items-center justify-center h-16 border-b border-gray-200 flex-shrink-0">
           <span className="text-lg font-bold">DS</span>
@@ -53,7 +53,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Kullanıcı - Sadece İkon */}
-        <div className="flex items-center justify-center p-4 border-t bg-white flex-shrink-0">
+        <div className="flex items-center justify-center p-4  bg-white flex-shrink-0">
           <Avatar className="w-8 h-8">
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>FA</AvatarFallback>

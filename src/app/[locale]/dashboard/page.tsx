@@ -30,7 +30,7 @@ export default function DashboardPage() {
     <div className="flex h-screen w-full">
       <Sidebar />
       <div
-        className={`flex flex-col flex-1 ${isMobile ? "ml-20" : ""} min-h-0`}
+        className={`flex flex-col flex-1 ${isMobile ? "ml-16" : ""} min-h-0`}
       >
         <Header onMenuClick={handleMenuClick} />
         {/* Overview ve Dropdown */}

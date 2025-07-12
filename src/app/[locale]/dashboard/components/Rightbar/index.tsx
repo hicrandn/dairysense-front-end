@@ -102,7 +102,7 @@ export default function Rightbar({ isVisible = true, onClose }: RightbarProps) {
           {/* Mobil Rightbar */}
           <aside className="fixed right-0 top-0 h-full w-64 bg-white border-l z-50 lg:hidden transform transition-transform duration-300 ease-in-out">
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200">
+            <div className="flex items-center justify-between px-4 py-3  border-gray-200">
               <h2 className="text-lg font-semibold">Bildirimler</h2>
               <button
                 onClick={onClose}
