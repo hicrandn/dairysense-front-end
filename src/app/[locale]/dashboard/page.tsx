@@ -12,7 +12,6 @@ import PieChart from "@/components/ui/PieChart";
 import { weeklyMilkProduction, cowInventory } from "@/constants/chart-data";
 import { farmSuccessData } from "@/constants/farm-success";
 import Dropdown from "@/components/ui/dropdown";
-import WeatherWidget from "@/components/WeatherWidget";
 
 export default function DashboardPage() {
   const isMobile = useIsMobile();
@@ -48,7 +47,7 @@ export default function DashboardPage() {
             />
           </div>
           {/* Card grid başlangıcı */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-2 lg:gap-2 mb-2 lg:mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2 lg:gap-2 mb-2 lg:mb-4">
             {/* Son 24 Saat Süt */}
             <Card className="bg-[#eef0fd] min-h-[120px]">
               <CardHeader className="pb-2">
@@ -125,10 +124,6 @@ export default function DashboardPage() {
                 </div>
               </CardContent>
             </Card>
-            {/* Hava Durumu Widget'ı */}
-            <div className="col-span-1 xl:col-span-1">
-              <WeatherWidget />
-            </div>
           </div>
           {/* Card grid bitişi */}
 

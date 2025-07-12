@@ -4,15 +4,16 @@ import React from "react";
 import {
   Menu,
   Star,
-  Sun,
   Clock,
   Bell,
   PanelLeftDashed,
   Search,
   X,
+  Cloud,
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
+import WeatherWidget from "@/components/WeatherWidget";
 
 interface HeaderProps {
   onNotificationClick?: () => void;
@@ -22,6 +23,7 @@ interface HeaderProps {
 const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
   const isMobile = useIsMobile();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isWeatherOpen, setIsWeatherOpen] = useState(false);
 
   return (
     <header className="h-16 flex items-center justify-between px-2 md:px-4 bg-white border-b relative z-40 w-full flex-shrink-0">
@@ -56,7 +58,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
         {isMobile ? (
           <div className="w-full">
             {isSearchOpen ? (
-              <div className="flex items-center bg-gray-100 rounded-md px-3 py-2">
+              <div className="flex items-center bg-gray-100 rounded-md px-3 py-2 animate-in slide-in-from-top-2 duration-300 ease-out">
                 <Search className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" />
                 <input
                   type="text"
@@ -66,7 +68,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
                 />
                 <button
                   onClick={() => setIsSearchOpen(false)}
-                  className="ml-2 p-1.5 hover:bg-gray-200 rounded flex-shrink-0"
+                  className="ml-2 p-1.5 hover:bg-gray-200 rounded flex-shrink-0 transition-colors"
                 >
                   <X className="w-4 h-4 text-gray-400" />
                 </button>
@@ -74,7 +76,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
             ) : (
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="w-full flex items-center justify-center bg-gray-100 rounded-md px-3 py-2 text-gray-400 hover:bg-gray-200 transition-colors"
+                className="w-full flex items-center justify-center bg-gray-100 rounded-md px-3 py-2 text-gray-400 hover:bg-gray-200 transition-colors animate-in fade-in duration-200"
               >
                 <Search className="w-4 h-4 mr-2 flex-shrink-0" />
                 <span className="text-base">Ara</span>
@@ -87,7 +89,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
             <input
               type="text"
               placeholder="İnek Ara"
-              className="bg-gray-100 rounded-md pl-10 pr-3 py-2 text-sm outline-none placeholder:text-gray-400 w-full focus:bg-white border border-transparent focus:border-gray-300 transition-all"
+              className="bg-gray-100 rounded-md pl-10 pr-3 py-2 text-sm outline-none placeholder:text-gray-400 w-full focus:bg-white border border-transparent focus:border-gray-300 transition-all duration-200 ease-out"
             />
           </div>
         )}
@@ -95,22 +97,34 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
 
       {/* Sağ kısım - Sadece ikonlar */}
       <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-        {/* Sadece masaüstünde görünür */}
-        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
-          <Sun className="w-5 h-5 text-gray-500" />
-        </button>
+        {/* Hava Durumu Widget'ı */}
+        <div className="relative">
+          <button
+            onClick={() => setIsWeatherOpen(!isWeatherOpen)}
+            className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200"
+          >
+            <Cloud className="w-5 h-5 text-gray-500" />
+          </button>
+          {isWeatherOpen && (
+            <div
+              className="absolute top-full right-0 mt-2 z-50 animate-in fade-in-0 zoom-in-95 duration-200 ease-out"
+              style={{
+                animation: "fadeInScale 0.2s ease-out",
+              }}
+            >
+              <WeatherWidget />
+            </div>
+          )}
+        </div>
         <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
           <Clock className="w-5 h-5 text-gray-500" />
         </button>
         {/* Bildirimler - her zaman görünür */}
         <button
           onClick={onNotificationClick}
-          className="relative p-2 hover:bg-gray-100 rounded-md transition-colors"
+          className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200"
         >
           <Bell className="w-5 h-5 text-gray-500" />
-          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">
-            3
-          </span>
         </button>
         {/* Layout ikonu - sadece masaüstünde görünür */}
         <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
