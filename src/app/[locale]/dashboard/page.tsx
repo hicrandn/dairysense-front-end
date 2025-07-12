@@ -10,6 +10,7 @@ import { TrendingUp, TrendingDown } from "lucide-react";
 import BarChart from "@/components/ui/BarChart";
 import PieChart from "@/components/ui/PieChart";
 import { weeklyMilkProduction, cowInventory } from "@/constants/chart-data";
+import { farmSuccessData } from "@/constants/farm-success";
 
 export default function DashboardPage() {
   const isMobile = useIsMobile();
@@ -26,11 +27,13 @@ export default function DashboardPage() {
   return (
     <div className="flex h-screen w-full">
       <Sidebar />
-      <div className={`flex flex-col flex-1 ${isMobile ? "ml-20" : ""}`}>
+      <div
+        className={`flex flex-col flex-1 ${isMobile ? "ml-20" : ""} min-h-0`}
+      >
         <Header onMenuClick={handleMenuClick} />
-        <main className="flex-1 bg-gray-50 p-4 sm:p-6 lg:p-10 ">
+        <main className="flex-1 bg-gray-50 p-4 sm:p-6 lg:p-10 overflow-auto">
           {/* Card grid başlangıcı */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-2 lg:gap-4 mb-4 lg:mb-6">
             {/* Son 24 Saat Süt */}
             <Card className="bg-[#eef0fd] min-h-[120px]">
               <CardHeader className="pb-2">
@@ -39,8 +42,8 @@ export default function DashboardPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 truncate">
+                <div className="flex items-center gap-4">
+                  <span className="text-2xl sm:text-2xl lg:text-2xl xl:text-3xl font-bold text-gray-900 truncate">
                     7,265
                   </span>
                   <div className="flex items-center gap-1 flex-shrink-0">
@@ -58,8 +61,8 @@ export default function DashboardPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 truncate">
+                <div className="flex items-center gap-4">
+                  <span className="text-2xl sm:text-2xl lg:text-2xl xl:text-3xl font-bold text-gray-900 truncate">
                     3,671
                   </span>
                   <div className="flex items-center gap-1 flex-shrink-0">
@@ -77,8 +80,8 @@ export default function DashboardPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 truncate">
+                <div className="flex items-center gap-4">
+                  <span className="text-2xl sm:text-2xl lg:text-2xl xl:text-3xl font-bold text-gray-900 truncate">
                     156
                   </span>
                   <div className="flex items-center gap-1 flex-shrink-0">
@@ -96,8 +99,8 @@ export default function DashboardPage() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 truncate">
+                <div className="flex items-center gap-4 ">
+                  <span className="text-2xl sm:text-2xl lg:text-2xl xl:text-3xl font-bold text-gray-900 truncate">
                     2,318
                   </span>
                   <div className="flex items-center gap-1 flex-shrink-0">
@@ -125,72 +128,30 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <ul className="space-y-3 mt-2">
-                  <li className="flex justify-between items-center text-sm">
-                    <span className="flex-shrink-0 mr-3 text-xs lg:text-sm">
-                      Tohumlama
-                    </span>
-                    <span className="w-16 sm:w-20 lg:w-24 xl:w-28 h-2 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
-                      <span
-                        className="block h-full bg-blue-500 rounded-full"
-                        style={{ width: "60%" }}
-                      ></span>
-                    </span>
-                  </li>
-                  <li className="flex justify-between items-center text-sm">
-                    <span className="flex-shrink-0 mr-3 text-xs lg:text-sm">
-                      Sağım Süresi
-                    </span>
-                    <span className="w-16 sm:w-20 lg:w-24 xl:w-28 h-2 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
-                      <span
-                        className="block h-full bg-green-500 rounded-full"
-                        style={{ width: "80%" }}
-                      ></span>
-                    </span>
-                  </li>
-                  <li className="flex justify-between items-center text-sm">
-                    <span className="flex-shrink-0 mr-3 text-xs lg:text-sm">
-                      Tedaviler
-                    </span>
-                    <span className="w-16 sm:w-20 lg:w-24 xl:w-28 h-2 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
-                      <span
-                        className="block h-full bg-yellow-500 rounded-full"
-                        style={{ width: "40%" }}
-                      ></span>
-                    </span>
-                  </li>
-                  <li className="flex justify-between items-center text-sm">
-                    <span className="flex-shrink-0 mr-3 text-xs lg:text-sm">
-                      Protokoller
-                    </span>
-                    <span className="w-16 sm:w-20 lg:w-24 xl:w-28 h-2 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
-                      <span
-                        className="block h-full bg-purple-500 rounded-full"
-                        style={{ width: "50%" }}
-                      ></span>
-                    </span>
-                  </li>
-                  <li className="flex justify-between items-center text-sm">
-                    <span className="flex-shrink-0 mr-3 text-xs lg:text-sm">
-                      Veri Girişi
-                    </span>
-                    <span className="w-16 sm:w-20 lg:w-24 xl:w-28 h-2 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
-                      <span
-                        className="block h-full bg-pink-500 rounded-full"
-                        style={{ width: "30%" }}
-                      ></span>
-                    </span>
-                  </li>
-                  <li className="flex justify-between items-center text-sm">
-                    <span className="flex-shrink-0 mr-3 text-xs lg:text-sm">
-                      Kızgınlıklar
-                    </span>
-                    <span className="w-16 sm:w-20 lg:w-24 xl:w-28 h-2 bg-gray-200 rounded-full overflow-hidden flex-shrink-0">
-                      <span
-                        className="block h-full bg-red-500 rounded-full"
-                        style={{ width: "70%" }}
-                      ></span>
-                    </span>
-                  </li>
+                  {farmSuccessData.map((item) => (
+                    <li
+                      key={item.label}
+                      className="flex justify-between items-center text-sm"
+                    >
+                      <span className="flex-shrink-0 mr-3 text-xs lg:text-sm">
+                        {item.label}
+                      </span>
+                      <span className="flex gap-1">
+                        {item.values.map((val, i) => (
+                          <span
+                            key={i}
+                            className={`w-4 h-1.5 rounded-full ${
+                              val === 1
+                                ? "bg-black"
+                                : val === 0.5
+                                ? "bg-gray-400"
+                                : "bg-gray-200"
+                            }`}
+                          ></span>
+                        ))}
+                      </span>
+                    </li>
+                  ))}
                 </ul>
               </CardContent>
             </Card>

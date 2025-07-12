@@ -15,14 +15,14 @@ export default function Sidebar() {
   // Mobil cihazlarda sadece ikonların göründüğü sidebar
   if (isMobile) {
     return (
-      <aside className="fixed top-0 left-0 bg-white border-r z-50 w-20 flex flex-col">
+      <aside className="fixed top-0 left-0 bg-white border-r z-50 w-20 flex flex-col h-screen">
         {/* Logo */}
-        <div className="flex items-center justify-center h-16 border-b border-gray-200">
+        <div className="flex items-center justify-center h-16 border-b border-gray-200 flex-shrink-0">
           <span className="text-lg font-bold">DS</span>
         </div>
 
         {/* Menü - Sadece İkonlar */}
-        <nav className="flex-1 px-2 py-2">
+        <nav className="flex-1 px-2 py-2 overflow-auto">
           <ul className="space-y-2">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -53,7 +53,7 @@ export default function Sidebar() {
         </nav>
 
         {/* Kullanıcı - Sadece İkon */}
-        <div className="flex items-center justify-center p-4 border-t bg-white">
+        <div className="flex items-center justify-center p-4 border-t bg-white flex-shrink-0">
           <Avatar className="w-8 h-8">
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>FA</AvatarFallback>
@@ -67,15 +67,15 @@ export default function Sidebar() {
   return (
     <aside className="flex flex-col h-screen bg-white border-r w-48 lg:w-56 xl:w-64 flex-shrink-0">
       {/* Logo */}
-      <div className="flex items-center justify-center h-16 border-b border-gray-200">
+      <div className="flex items-center justify-center h-16 border-b border-gray-200 flex-shrink-0">
         <Link href="/">
           <span className="text-2xl lg:text-3xl font-bold">DairySense</span>
         </Link>
       </div>
 
       {/* Menü */}
-      <nav className="flex-1 px-2 py-2">
-        <ul className="space-y-2">
+      <nav className="flex-1 px-2 py-2 overflow-auto">
+        <ul className="space-y-3">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -106,7 +106,7 @@ export default function Sidebar() {
       </nav>
 
       {/* Kullanıcı */}
-      <div className="flex items-center gap-3 p-4 hover:bg-blue-50 transition-colors group mt-auto">
+      <div className="flex items-center gap-3 p-4 hover:bg-blue-50 transition-colors group flex-shrink-0">
         <Avatar className="w-8 h-8">
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>FA</AvatarFallback>
