@@ -11,42 +11,42 @@ import {
 
 export const navItems = [
   {
-    name: "Kontrol Paneli",
+    nameKey: "dashboard",
     path: "/dashboard",
     icon: LayoutDashboard,
   },
   {
-    name: "Raporlar",
+    nameKey: "reports",
     path: "/reports",
     icon: FileText,
   },
   {
-    name: "Protokoller",
+    nameKey: "protocols",
     path: "/protocols",
     icon: Folder,
   },
   {
-    name: "Tanımlı Olaylar",
+    nameKey: "definedEvents",
     path: "/defined-events",
     icon: IdCard,
   },
   {
-    name: "Ayarlar",
+    nameKey: "settings",
     path: "/settings",
     icon: Settings,
   },
   {
-    name: "Tanımlanmış Olaylar",
+    nameKey: "definedIncidents",
     path: "/defined-incidents",
     icon: Users,
   },
   {
-    name: "Tedaviler",
+    nameKey: "treatments",
     path: "/treatments",
     icon: BookOpen,
   },
   {
-    name: "Ajanda",
+    nameKey: "agenda",
     path: "/agenda",
     icon: Calendar,
   },

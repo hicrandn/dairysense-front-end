@@ -1,0 +1,26 @@
+{
+  "HomePage": {
+    "title": "Merhaba dünya!",
+    "about": "Hakkında sayfasına git"
+  },
+  "Navigation": {
+    "home": "Ana Sayfa",
+    "dashboard": "Kontrol Paneli",
+    "settings": "Ayarlar"
+  },
+  "sidebar": {
+    "dashboard": "Kontrol Paneli",
+    "reports": "Raporlar",
+    "protocols": "Protokoller",
+    "definedEvents": "Tanımlı Olaylar",
+    "settings": "Ayarlar",
+    "definedIncidents": "Tanımlanmış Olaylar",
+    "treatments": "Tedaviler",
+    "agenda": "Ajanda",
+    "language": "Dil",
+    "languages": {
+      "tr": "Türkçe",
+      "en": "İngilizce"
+    }
+  }
+}

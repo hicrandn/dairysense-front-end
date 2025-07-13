@@ -9,8 +9,11 @@ import Chart from "@/components/ui/Linechart";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import BarChart from "@/components/ui/BarChart";
 import PieChart from "@/components/ui/PieChart";
-import { weeklyMilkProduction, cowInventory } from "@/constants/chart-data";
-import { farmSuccessData } from "@/constants/farm-success";
+import {
+  weeklyMilkProduction,
+  cowInventory,
+} from "@/app/[locale]/constants/chart-data";
+import { farmSuccessData } from "@/app/[locale]/constants/farm-success";
 import Dropdown from "@/components/ui/dropdown";
 
 export default function DashboardPage() {

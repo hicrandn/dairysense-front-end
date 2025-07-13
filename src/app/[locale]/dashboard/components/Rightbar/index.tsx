@@ -1,7 +1,11 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { User2, X } from "lucide-react";
-import { notifications, actions, doctors } from "@/constants/rightbar-data";
+import {
+  notifications,
+  actions,
+  doctors,
+} from "@/app/[locale]/constants/rightbar-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface RightbarProps {

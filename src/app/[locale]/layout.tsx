@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
+import { getMessages } from "next-intl/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,10 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   // Ensure that the incoming `locale` is valid
+
   const { locale } = await params;
+  const messages = await getMessages();
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -32,7 +36,7 @@ export default async function LocaleLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>
           <div className="flex h-screen">{children}</div>
         </NextIntlClientProvider>
       </body>
