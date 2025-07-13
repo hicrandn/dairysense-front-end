@@ -1,8 +1,6 @@
 "use client";
-import Sidebar from "./components/Sidebar";
 import Rightbar from "./components/Rightbar";
 import Header from "./components/Header";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Chart from "@/components/ui/Linechart";
@@ -15,9 +13,9 @@ import {
 } from "@/app/[locale]/constants/chart-data";
 import { farmSuccessData } from "@/app/[locale]/constants/farm-success";
 import Dropdown from "@/components/ui/dropdown";
+import SidebarLayout from "./components/SideBarLayout";
 
 export default function DashboardPage() {
-  const isMobile = useIsMobile();
   const [isRightbarVisible, setIsRightbarVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState("Bugün");
 
@@ -30,11 +28,8 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="flex h-screen w-full">
-      <Sidebar />
-      <div
-        className={`flex flex-col flex-1 ${isMobile ? "ml-16" : ""} min-h-0`}
-      >
+    <SidebarLayout>
+      <div className="flex flex-col flex-1 min-h-0">
         <Header onMenuClick={handleMenuClick} />
 
         <main className="flex-1 p-4 sm:p-4 lg:p-6 overflow-auto">
@@ -184,6 +179,6 @@ export default function DashboardPage() {
         </main>
       </div>
       <Rightbar isVisible={isRightbarVisible} onClose={handleRightbarClose} />
-    </div>
+    </SidebarLayout>
   );
 }

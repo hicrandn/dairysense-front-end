@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link as IntlLink } from "@/i18n/navigation";
-import { Globe, ChevronDown } from "lucide-react";
-
+import { ChevronDown } from "lucide-react";
+import ReactCountryFlag from "react-country-flag";
 import { navItems } from "@/app/[locale]/constants/sidebar.menu";
 import clsx from "clsx";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -74,12 +74,20 @@ export default function Sidebar() {
         </nav>
 
         {/* Dil Değiştirici - Mobil */}
-        <div className="flex items-center justify-center p-2 border-t border-gray-200">
+        <div className="flex items-center justify-center p-2  border-gray-200">
           <button
             onClick={toggleLanguageMenu}
             className="flex items-center justify-center p-2 rounded-lg hover:bg-gray-50 transition-colors relative"
           >
-            <Globe className="w-4 h-4 text-gray-600" />
+            <ReactCountryFlag
+              countryCode={locale === "tr" ? "TR" : "US"}
+              svg
+              style={{
+                width: "16px",
+                height: "16px",
+                borderRadius: "2px",
+              }}
+            />
             {isLanguageOpen && (
               <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-24 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden">
                 {languages.map((language) => (
@@ -88,12 +96,21 @@ export default function Sidebar() {
                     href="/dashboard"
                     locale={language.locale}
                     onClick={() => setIsLanguageOpen(false)}
-                    className={`block w-full text-center px-2 py-1 text-xs hover:bg-blue-50 transition ${
+                    className={`flex items-center justify-center gap-1 w-full px-3 py-1 text-xs hover:bg-blue-50 transition ${
                       getCurrentLanguage() === language.code
                         ? "bg-blue-100 text-blue-700 font-medium"
                         : "text-gray-700"
                     }`}
                   >
+                    <ReactCountryFlag
+                      countryCode={language.locale === "tr" ? "TR" : "US"}
+                      svg
+                      style={{
+                        width: "12px",
+                        height: "12px",
+                        borderRadius: "1px",
+                      }}
+                    />
                     {language.code}
                   </IntlLink>
                 ))}
@@ -157,12 +174,20 @@ export default function Sidebar() {
       </nav>
 
       {/* Dil Değiştirici - Desktop */}
-      <div className="px-3 py-2 border-t border-gray-200">
+      <div className="px-3 py-2 border-gray-200">
         <button
           onClick={toggleLanguageMenu}
           className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-blue-50 transition-colors group relative"
         >
-          <Globe className="w-4 h-4 text-gray-500 group-hover:text-blue-600" />
+          <ReactCountryFlag
+            countryCode={locale === "tr" ? "TR" : "US"}
+            svg
+            style={{
+              width: "16px",
+              height: "16px",
+              borderRadius: "2px",
+            }}
+          />
           <span className="text-sm font-medium text-gray-700 group-hover:text-blue-700">
             {getCurrentLanguage()}
           </span>
@@ -180,12 +205,21 @@ export default function Sidebar() {
                   href="/dashboard"
                   locale={language.locale}
                   onClick={() => setIsLanguageOpen(false)}
-                  className={`block w-full text-left px-3 py-2 text-sm hover:bg-blue-50 transition ${
+                  className={`flex items-center gap-2 w-full text-left px-3 py-2 text-sm hover:bg-blue-50 transition ${
                     getCurrentLanguage() === language.code
                       ? "bg-blue-100 text-blue-700 font-medium"
                       : "text-gray-700"
                   }`}
                 >
+                  <ReactCountryFlag
+                    countryCode={language.locale === "tr" ? "TR" : "US"}
+                    svg
+                    style={{
+                      width: "14px",
+                      height: "14px",
+                      borderRadius: "2px",
+                    }}
+                  />
                   {language.name}
                 </IntlLink>
               ))}

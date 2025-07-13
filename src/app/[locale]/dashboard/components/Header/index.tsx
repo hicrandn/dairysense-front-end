@@ -14,6 +14,7 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState, useEffect, useRef } from "react";
 import WeatherWidget from "@/app/[locale]/dashboard/components/WeatherWidget";
+import { useSidebar } from "@/components/ui/sidebar";
 
 interface HeaderProps {
   onNotificationClick?: () => void;
@@ -25,6 +26,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isWeatherOpen, setIsWeatherOpen] = useState(false);
   const weatherRef = useRef<HTMLDivElement>(null);
+  const { toggleSidebar } = useSidebar();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -59,7 +61,10 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
           </button>
         )}
         {/* Sol başa Layout ikonu - sadece masaüstü */}
-        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
+        <button
+          onClick={toggleSidebar}
+          className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex"
+        >
           <PanelLeftDashed className="w-5 h-5 text-gray-500" />
         </button>
         {/* Breadcrumb */}
@@ -147,7 +152,10 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
           <Bell className="w-5 h-5 text-gray-500" />
         </button>
         {/* Layout ikonu - sadece masaüstünde görünür */}
-        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex">
+        <button
+          onClick={toggleSidebar}
+          className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex"
+        >
           <PanelLeftDashed className="w-5 h-5 text-gray-500" />
         </button>
       </div>
