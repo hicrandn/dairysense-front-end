@@ -40,8 +40,8 @@ const PieChart: React.FC<PieChartProps> = ({ data, title }) => {
                 nameKey="name"
                 cx="50%"
                 cy="50%"
-                innerRadius={25}
-                outerRadius={50}
+                innerRadius={30}
+                outerRadius={70}
                 paddingAngle={2}
                 strokeWidth={2}
                 stroke="#ffffff"

@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { getMessages } from "next-intl/server";
+import { Metadata } from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+export const metadata: Metadata = {
+  title: "DairySense",
+  description: "DairySense Dashboard",
+};
 
 export default async function LocaleLayout({
   children,

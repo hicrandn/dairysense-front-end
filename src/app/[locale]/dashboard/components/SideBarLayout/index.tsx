@@ -65,13 +65,13 @@ export default function SidebarLayout({
         <Sidebar collapsible="icon">
           {/* Header - Logo */}
           <SidebarHeader className="data-[collapsed=true]:hidden">
-            <div className="flex items-center gap-3 px-2 py-4">
+            <div className="flex items-center gap-2 px-2 py-4">
               <Image
-                src="/images/logo.png"
+                src="/images/logo2.png"
                 alt="DairySense Logo"
-                className="h-10 w-10 rounded-lg "
-                width={40}
-                height={40}
+                className="object-contain"
+                width={50}
+                height={50}
               />
               <div className="flex flex-col">
                 <h1 className="text-lg font-bold text-gray-900">DairySense</h1>

@@ -1,4 +1,4 @@
-# DairySense Frontend
+# DairySense Frontend 🐄📊
 
 Modern ve interaktif bir süt çiftliği yönetim dashboard'u. Bu proje, çiftlik verilerini görselleştirmek ve yönetmek için geliştirilmiş kapsamlı bir web uygulamasıdır.
 
@@ -57,67 +57,9 @@ Modern ve interaktif bir süt çiftliği yönetim dashboard'u. Bu proje, çiftli
 
 ## 📁 Proje Yapısı
 
-```
-dairysense-front-end/
-├── src/
-│   ├── app/
-│   │   ├── [locale]/           # Çoklu dil desteği
-│   │   │   ├── dashboard/      # Ana dashboard sayfası
-│   │   │   │   ├── components/ # Dashboard bileşenleri
-│   │   │   │   │   ├── Header/
-│   │   │   │   │   ├── Rightbar/
-│   │   │   │   │   ├── SideBarLayout/
-│   │   │   │   │   └── WeatherWidget/
-│   │   │   │   └── page.tsx
-│   │   │   ├── layout.tsx
-│   │   │   └── page.tsx
-│   │   ├── constants/          # Sabit veriler
-│   │   │   ├── chart-data.ts
-│   │   │   ├── farm-success.ts
-│   │   │   ├── rightbar-data.ts
-│   │   │   └── sidebar.menu.ts
-│   │   ├── globals.css
-│   │   └── favicon.ico
-│   ├── components/
-│   │   └── ui/                 # Yeniden kullanılabilir UI bileşenleri
-│   │       ├── DraggableContainer.tsx
-│   │       ├── DraggableCard.tsx
-│   │       ├── Linechart.tsx
-│   │       ├── BarChart.tsx
-│   │       ├── PieChart.tsx
-│   │       └── ... (diğer UI bileşenleri)
-│   ├── hooks/                  # Custom React hooks
-│   │   ├── use-dashboard-layout.ts
-│   │   ├── use-chart-layout.ts
-│   │   └── use-mobile.ts
-│   ├── i18n/                   # Uluslararasılaştırma
-│   ├── lib/                    # Yardımcı fonksiyonlar
-│   └── messages/               # Dil dosyaları
-│       ├── en.json
-│       └── tr.json
-├── public/                     # Statik dosyalar
-└── package.json
-```
+````
 
-## 🚀 Kurulum ve Çalıştırma
 
-### Gereksinimler
-
-- Node.js 18+
-- Yarn veya npm
-
-### Kurulum
-
-```bash
-# Projeyi klonlayın
-git clone [repository-url]
-cd dairysense-front-end
-
-# Bağımlılıkları yükleyin
-yarn install
-# veya
-npm install
-```
 
 ### Geliştirme Sunucusu
 
@@ -126,9 +68,9 @@ npm install
 yarn dev
 # veya
 npm run dev
-```
+````
 
-Uygulama `http://localhost:3000` adresinde çalışacaktır.
+Uygulama `https://dairysense.com` adresinde çalışacaktır.
 
 ### Build ve Production
 
@@ -199,23 +141,3 @@ yarn lint
 # veya
 npm run lint
 ```
-
-## 📝 Lisans
-
-Bu proje özel bir projedir. Tüm hakları saklıdır.
-
-## 🤝 Katkıda Bulunma
-
-1. Projeyi fork edin
-2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Pull Request oluşturun
-
-## 📞 İletişim
-
-Proje hakkında sorularınız için lütfen iletişime geçin.
-
----
-
-**DairySense Frontend** - Modern süt çiftliği yönetim dashboard'u 🐄📊
