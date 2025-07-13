@@ -26,9 +26,15 @@ import clsx from "clsx";
 
 interface SidebarLayoutProps {
   children: React.ReactNode;
+  rightbar?: React.ReactNode;
+  isRightbarVisible?: boolean;
 }
 
-export default function SidebarLayout({ children }: SidebarLayoutProps) {
+export default function SidebarLayout({
+  children,
+  rightbar,
+  isRightbarVisible = false,
+}: SidebarLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
@@ -55,15 +61,15 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex h-screen w-full">
+      <div className="flex h-screen w-full ">
         <Sidebar collapsible="icon">
           {/* Header - Logo */}
           <SidebarHeader className="data-[collapsed=true]:hidden">
-            <div className="flex items-center gap-3 px-3 py-4">
+            <div className="flex items-center gap-3 px-2 py-4">
               <Image
                 src="/images/logo.png"
                 alt="DairySense Logo"
-                className="h-10 w-10 rounded-lg"
+                className="h-10 w-10 rounded-lg "
                 width={40}
                 height={40}
               />
@@ -93,15 +99,15 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
                             "w-full justify-start gap-3 px-3 py-4 rounded-lg transition-all duration-200",
                             isActive
                               ? "bg-blue-50 text-gray-900 font-medium"
-                              : "text-gray-700 hover:text-gray-900"
+                              : "text-gray-700 hover:bg-blue-50"
                           )}
                         >
                           <Icon
                             className={clsx(
-                              "h-8 w-8 transition-colors",
+                              "h-10 w-10 transition-colors",
                               isActive
-                                ? "text-gray-900"
-                                : "text-gray-500 group-hover:text-blue-600"
+                                ? " text-gray-900"
+                                : "text-gray-500 group-hover:text-blue-500"
                             )}
                           />
                           <span className="text-sm font-medium">
@@ -194,7 +200,17 @@ export default function SidebarLayout({ children }: SidebarLayoutProps) {
           </SidebarFooter>
         </Sidebar>
 
-        <SidebarInset>{children}</SidebarInset>
+        <SidebarInset
+          className={clsx(
+            "relative transition-all duration-300 ease-in-out",
+            isRightbarVisible ? "lg:mr-64" : "lg:mr-0"
+          )}
+        >
+          {children}
+        </SidebarInset>
+
+        {/* Rightbar */}
+        {rightbar}
       </div>
     </SidebarProvider>
   );

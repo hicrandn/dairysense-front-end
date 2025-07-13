@@ -48,7 +48,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
   }, [isWeatherOpen]);
 
   return (
-    <header className="h-16 flex items-center justify-between px-2 md:px-4 bg-white border-b relative z-40 w-full flex-shrink-0">
+    <header className="h-16 flex items-center justify-between px-2 md:px-4 bg-white border-b relative z-20 w-full flex-shrink-0">
       {/* Sol kısım - Sadece ikon ve breadcrumb */}
       <div className="flex items-center gap-2 flex-shrink-0 min-w-0">
         {/* Mobil menü butonu */}
@@ -153,7 +153,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
         </button>
         {/* Layout ikonu - sadece masaüstünde görünür */}
         <button
-          onClick={toggleSidebar}
+          onClick={onMenuClick}
           className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex"
         >
           <PanelLeftDashed className="w-5 h-5 text-gray-500" />

@@ -28,7 +28,12 @@ export default function DashboardPage() {
   };
 
   return (
-    <SidebarLayout>
+    <SidebarLayout
+      rightbar={
+        <Rightbar isVisible={isRightbarVisible} onClose={handleRightbarClose} />
+      }
+      isRightbarVisible={isRightbarVisible}
+    >
       <div className="flex flex-col flex-1 min-h-0">
         <Header onMenuClick={handleMenuClick} />
 
@@ -178,7 +183,6 @@ export default function DashboardPage() {
           </div>
         </main>
       </div>
-      <Rightbar isVisible={isRightbarVisible} onClose={handleRightbarClose} />
     </SidebarLayout>
   );
 }
