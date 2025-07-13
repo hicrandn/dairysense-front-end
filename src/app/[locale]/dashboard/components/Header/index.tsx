@@ -12,7 +12,7 @@ import {
   Cloudy,
 } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import WeatherWidget from "@/app/[locale]/dashboard/components/WeatherWidget";
 
 interface HeaderProps {
@@ -24,6 +24,26 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
   const isMobile = useIsMobile();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isWeatherOpen, setIsWeatherOpen] = useState(false);
+  const weatherRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        weatherRef.current &&
+        !weatherRef.current.contains(event.target as Node)
+      ) {
+        setIsWeatherOpen(false);
+      }
+    };
+
+    if (isWeatherOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isWeatherOpen]);
 
   return (
     <header className="h-16 flex items-center justify-between px-2 md:px-4 bg-white border-b relative z-40 w-full flex-shrink-0">
@@ -98,7 +118,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
       {/* Sağ kısım - Sadece ikonlar */}
       <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
         {/* Hava Durumu Widget'ı */}
-        <div className="relative">
+        <div className="relative" ref={weatherRef}>
           <button
             onClick={() => setIsWeatherOpen(!isWeatherOpen)}
             className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200"
