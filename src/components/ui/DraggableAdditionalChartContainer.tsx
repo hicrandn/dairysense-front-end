@@ -19,7 +19,7 @@ import {
   rectSortingStrategy,
 } from "@dnd-kit/sortable";
 import { AdditionalChartSection } from "@/hooks/use-chart-layout";
-import { DraggableAdditionalChartSection } from "./DraggableAdditionalChartSection";
+import { DraggableAdditionalChartSection } from "@/components/ui/DraggableAdditionalChartSection";
 import { useState, useEffect } from "react";
 
 interface DraggableAdditionalChartContainerProps {

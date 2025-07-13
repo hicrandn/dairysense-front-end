@@ -4,6 +4,7 @@ import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { AdditionalChartSection } from "@/hooks/use-chart-layout";
+import clsx from "clsx";
 
 interface DraggableAdditionalChartSectionProps {
   section: AdditionalChartSection;
@@ -34,9 +35,10 @@ export const DraggableAdditionalChartSection: React.FC<
       style={style}
       {...attributes}
       {...listeners}
-      className={` flex flex-col h-full  cursor-move transition-shadow ${
-        isDragging ? "opacity-50" : ""
-      }`}
+      className={clsx(
+        "flex flex-col h-full cursor-move transition-shadow",
+        isDragging && "opacity-50"
+      )}
     >
       <div className="flex-1">
         {section.type === "barChart" ? barChartComponent : pieChartComponent}

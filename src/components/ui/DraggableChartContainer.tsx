@@ -19,8 +19,9 @@ import {
   rectSortingStrategy,
 } from "@dnd-kit/sortable";
 import { ChartSection } from "@/hooks/use-chart-layout";
-import { DraggableChartSection } from "./DraggableChartSection";
+import { DraggableChartSection } from "@/components/ui/DraggableChartSection";
 import { useState, useEffect } from "react";
+import clsx from "clsx";
 
 interface DraggableChartContainerProps {
   sections: ChartSection[];
@@ -78,11 +79,13 @@ export const DraggableChartContainer: React.FC<
         {sections.map((section) => (
           <div
             key={section.id}
-            className={`${
-              section.type === "chart"
-                ? "col-span-1 xl:col-span-2"
-                : "col-span-1"
-            } rounded-xl shadow-sm p-4 flex flex-col h-full bg-gray-100`}
+            className={clsx(
+              "rounded-xl shadow-sm p-4 flex flex-col h-full bg-gray-100",
+              {
+                "col-span-1 xl:col-span-2": section.type === "chart",
+                "col-span-1": section.type !== "chart",
+              }
+            )}
           >
             <div className="flex-1">
               {section.type === "chart" ? chartComponent : successComponent}

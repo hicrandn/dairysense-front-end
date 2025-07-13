@@ -6,6 +6,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { Card, CardContent, CardHeader, CardTitle } from "./card";
 import { TrendingUp, TrendingDown } from "lucide-react";
 import { DashboardCard } from "@/hooks/use-dashboard-layout";
+import clsx from "clsx";
 
 interface DraggableCardProps {
   card: DashboardCard;
@@ -32,7 +33,10 @@ export const DraggableCard: React.FC<DraggableCardProps> = ({ card }) => {
       <Card
         {...attributes}
         {...listeners}
-        className={`${card.bgColor} min-h-[100px] sm:min-h-[110px] md:min-h-[120px] lg:min-h-[130px] transition-all duration-200 hover:shadow-md cursor-grab active:cursor-grabbing`}
+        className={clsx(
+          card.bgColor,
+          "min-h-[100px] sm:min-h-[110px] md:min-h-[120px] lg:min-h-[130px] transition-all duration-200 hover:shadow-md cursor-grab active:cursor-grabbing"
+        )}
       >
         <CardHeader className="pb-1 sm:pb-2">
           <div className="flex items-center justify-between">

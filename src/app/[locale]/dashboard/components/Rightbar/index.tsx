@@ -1,10 +1,6 @@
 import Link from "next/link";
 import { User2, X } from "lucide-react";
-import {
-  notifications,
-  actions,
-  doctors,
-} from "@/app/[locale]/constants/rightbar-data";
+import { notifications, actions, doctors } from "@/app/constants/rightbar-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Popover,

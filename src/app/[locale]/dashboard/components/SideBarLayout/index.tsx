@@ -19,7 +19,7 @@ import {
   SidebarMenuItem,
   SidebarProvider,
 } from "@/components/ui/sidebar";
-import { navItems } from "@/app/[locale]/constants/sidebar.menu";
+import { navItems } from "@/app/constants/sidebar.menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
 import clsx from "clsx";

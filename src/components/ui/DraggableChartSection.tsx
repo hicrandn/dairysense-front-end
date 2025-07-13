@@ -3,6 +3,7 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import clsx from "clsx";
 import { Card, CardContent, CardHeader, CardTitle } from "./card";
 import { ChartSection } from "@/hooks/use-chart-layout";
 
@@ -38,20 +39,22 @@ export const DraggableChartSection: React.FC<DraggableChartSectionProps> = ({
     <div
       ref={setNodeRef}
       style={style}
-      className={`${
-        isChart ? "col-span-1 xl:col-span-2" : "col-span-1"
-      } relative group`}
+      className={clsx(
+        isChart ? "col-span-1 xl:col-span-2" : "col-span-1",
+        "relative group"
+      )}
     >
       <Card
         {...attributes}
         {...listeners}
-        className={`h-full bg-gray-100 transition-all duration-200 hover:shadow-md cursor-grab active:cursor-grabbing ${
-          isDragging ? "shadow-lg" : ""
-        }`}
+        className={clsx(
+          "h-full bg-gray-100 transition-all duration-200 hover:shadow-md cursor-grab active:cursor-grabbing",
+          isDragging && "shadow-lg"
+        )}
       >
         {section.title && (
           <CardHeader>
-            <CardTitle className="text-base lg:text-lg font-medium text-gray-900">
+            <CardTitle className="text-sm lg:text-lg font-bold text-gray-900">
               {section.title}
             </CardTitle>
           </CardHeader>
