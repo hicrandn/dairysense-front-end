@@ -16,7 +16,7 @@ import Dropdown from "@/components/ui/dropdown";
 import SidebarLayout from "./components/SideBarLayout";
 
 export default function DashboardPage() {
-  const [isRightbarVisible, setIsRightbarVisible] = useState(false);
+  const [isRightbarVisible, setIsRightbarVisible] = useState(true);
   const [selectedDate, setSelectedDate] = useState("Bugün");
 
   const handleMenuClick = () => {
