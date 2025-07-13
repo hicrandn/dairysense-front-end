@@ -33,7 +33,7 @@ interface SidebarLayoutProps {
 export default function SidebarLayout({
   children,
   rightbar,
-  isRightbarVisible = false,
+  isRightbarVisible = true,
 }: SidebarLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();

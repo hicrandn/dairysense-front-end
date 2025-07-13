@@ -1,7 +1,7 @@
 "use client";
 import Rightbar from "./components/Rightbar";
 import Header from "./components/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Chart from "@/components/ui/Linechart";
 import { TrendingUp, TrendingDown } from "lucide-react";
@@ -14,10 +14,17 @@ import {
 import { farmSuccessData } from "@/app/[locale]/constants/farm-success";
 import Dropdown from "@/components/ui/dropdown";
 import SidebarLayout from "./components/SideBarLayout";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function DashboardPage() {
-  const [isRightbarVisible, setIsRightbarVisible] = useState(true);
+  const isMobile = useIsMobile();
+  const [isRightbarVisible, setIsRightbarVisible] = useState(!isMobile);
   const [selectedDate, setSelectedDate] = useState("Bugün");
+
+  // Mobil durumu değiştiğinde rightbar'ı güncelle
+  useEffect(() => {
+    setIsRightbarVisible(!isMobile);
+  }, [isMobile]);
 
   const handleMenuClick = () => {
     setIsRightbarVisible(!isRightbarVisible);
@@ -25,6 +32,10 @@ export default function DashboardPage() {
 
   const handleRightbarClose = () => {
     setIsRightbarVisible(false);
+  };
+
+  const handleNotificationClick = () => {
+    setIsRightbarVisible(true);
   };
 
   return (
@@ -35,7 +46,10 @@ export default function DashboardPage() {
       isRightbarVisible={isRightbarVisible}
     >
       <div className="flex flex-col flex-1 min-h-0">
-        <Header onMenuClick={handleMenuClick} />
+        <Header
+          onMenuClick={handleMenuClick}
+          onNotificationClick={handleNotificationClick}
+        />
 
         <main className="flex-1 p-4 sm:p-4 lg:p-6 overflow-auto">
           <div className="flex items-center justify-between mb-4 lg:mb-6">

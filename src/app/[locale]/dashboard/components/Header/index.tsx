@@ -54,7 +54,7 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
         {/* Mobil menü butonu */}
         {isMobile && (
           <button
-            onClick={onMenuClick}
+            onClick={onNotificationClick}
             className="p-2 hover:bg-gray-100 rounded-md transition-colors sm:hidden"
           >
             <Menu className="w-5 h-5 text-gray-500" />
