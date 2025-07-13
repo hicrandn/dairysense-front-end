@@ -14,6 +14,8 @@ import {
 const data = [
   { name: "Jan", value24: 20000, value10: 1000 },
   { name: "Feb", value24: 9000, value10: 12000 },
+  { name: "Feb", value24: 5000, value10: 10000 },
+
   { name: "Mar", value24: 14000, value10: 18000 },
   { name: "Apr", value24: 22000, value10: 10000 },
   { name: "May", value24: 28000, value10: 17000 },
@@ -100,8 +102,8 @@ export default function Chart() {
             />
             <defs>
               <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#666666" stopOpacity={0.7} />
-                <stop offset="100%" stopColor="#666666" stopOpacity={0.2} />
+                <stop offset="0%" stopColor="#222" stopOpacity={0.1} />
+                <stop offset="100%" stopColor="#222" stopOpacity={0.0} />
               </linearGradient>
             </defs>
             <Area
@@ -113,21 +115,21 @@ export default function Chart() {
             <Line
               type="monotone"
               dataKey="value24"
-              stroke="#222"
+              stroke="#000"
               strokeWidth={2}
               dot={false}
-              activeDot={{ r: 6, stroke: "#222", strokeWidth: 2, fill: "#fff" }}
+              activeDot={{ r: 6, stroke: "#000", strokeWidth: 2, fill: "#fff" }}
             />
             <Line
               type="monotone"
               dataKey="value10"
-              stroke="#A3BFFA"
+              stroke="#B0B7C3"
               strokeDasharray="4 4"
               strokeWidth={2}
               dot={false}
               activeDot={{
                 r: 5,
-                stroke: "#A3BFFA",
+                stroke: "#B0B7C3",
                 strokeWidth: 2,
                 fill: "#fff",
               }}
