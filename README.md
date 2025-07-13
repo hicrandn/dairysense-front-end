@@ -9,7 +9,7 @@ Modern ve interaktif bir süt çiftliği yönetim dashboard'u. Bu proje, çiftli
 - **Gerçek Zamanlı Veri Görselleştirme**: Süt üretimi, inek envanteri ve çiftlik performansı
 - **Responsive Tasarım**: Mobil, tablet ve masaüstü cihazlarda mükemmel görünüm
 - **Çoklu Dil Desteği**: Türkçe ve İngilizce dil desteği
-- **Hava Durumu Widget'ı**: Güncel hava durumu bilgileri
+- **Hava Durumu Widget'ı**: OpenWeather API entegrasyonu ile güncel hava durumu bilgileri
 
 ### 🎯 Drag & Drop Özellikleri
 
