@@ -3,7 +3,7 @@
 import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { AdditionalChartSection } from "@/hooks/use-chart-layout";
+import { AdditionalChartSection } from "@/hooks/use-dashboard-layout";
 import clsx from "clsx";
 
 interface DraggableAdditionalChartSectionProps {
