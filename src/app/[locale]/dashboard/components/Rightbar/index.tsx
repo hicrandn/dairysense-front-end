@@ -319,7 +319,10 @@ export default function Rightbar({ isVisible = true, onClose }: RightbarProps) {
       {isVisible && (
         <>
           {/* Overlay */}
-          <div className="fixed inset-0 z-40 lg:hidden " onClick={onClose} />
+          <div
+            className="fixed inset-0 z-40 lg:hidden bg-black/20"
+            onClick={onClose}
+          />
           {/* Mobil Rightbar */}
           <aside className="fixed right-0 top-0 h-full w-64 bg-background border-l border-border z-50 lg:hidden shadow-lg animate-in slide-in-from-right duration-500">
             <RightbarHeader onClose={onClose} isMobile />

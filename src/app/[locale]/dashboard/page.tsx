@@ -1,7 +1,7 @@
 "use client";
 import Rightbar from "./components/Rightbar";
 import Header from "./components/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Chart from "./components/Charts/Linechart";
 import BarChart from "./components/Charts/BarChart";
@@ -23,7 +23,12 @@ export default function DashboardPage() {
   const isMobile = useIsMobile();
 
   // Rightbar durumu - mobilde kapalı, desktop'ta açık
-  const [isRightbarOpen, setIsRightbarOpen] = useState(!isMobile);
+  const [isRightbarOpen, setIsRightbarOpen] = useState(false);
+
+  // isMobile değiştiğinde isRightbarOpen'ı güncelle
+  useEffect(() => {
+    setIsRightbarOpen(!isMobile);
+  }, [isMobile]);
 
   const { cards, updateCardOrder } = useDashboardLayout();
   const {
@@ -37,7 +42,10 @@ export default function DashboardPage() {
   const closeRightbar = () => setIsRightbarOpen(false);
 
   return (
-    <SidebarLayout rightbar={<Rightbar onClose={closeRightbar} />}>
+    <SidebarLayout
+      rightbar={<Rightbar isVisible={isRightbarOpen} onClose={closeRightbar} />}
+      isRightbarVisible={isRightbarOpen}
+    >
       <div className="flex flex-col flex-1 min-h-0">
         <Header onAction={toggleRightbar} />
 
