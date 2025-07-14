@@ -8,6 +8,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useIsMobile } from "@/hooks/use-mobile";
+import clsx from "clsx";
 
 interface RightbarProps {
   isVisible?: boolean;
@@ -276,14 +277,16 @@ const RightbarHeader = ({
   isMobile?: boolean;
 }) => (
   <div
-    className={`flex items-center justify-between px-4 py-3 ${
+    className={clsx(
+      "flex items-center justify-between px-4 py-3",
       isMobile ? "border-b border-border" : "pt-4 border-border"
-    }`}
+    )}
   >
     <h2
-      className={`font-semibold text-foreground ${
+      className={clsx(
+        "font-semibold text-foreground",
         isMobile ? "text-lg" : "text-base mb-2"
-      }`}
+      )}
     >
       Bildirimler
     </h2>
@@ -303,9 +306,10 @@ export default function Rightbar({ isVisible = true, onClose }: RightbarProps) {
     <>
       {/* Desktop Rightbar */}
       <aside
-        className={`hidden lg:block fixed right-0 top-0 h-screen bg-background border-l border-border w-64 z-30 transform transition-transform duration-300 ease-in-out ${
+        className={clsx(
+          "hidden lg:block fixed right-0 top-0 h-screen bg-background border-l border-border w-64 z-30 transform transition-transform duration-300 ease-in-out",
           isVisible ? "translate-x-0" : "translate-x-full"
-        }`}
+        )}
       >
         <RightbarHeader />
         <RightbarContent />
@@ -316,11 +320,11 @@ export default function Rightbar({ isVisible = true, onClose }: RightbarProps) {
         <>
           {/* Overlay */}
           <div
-            className="fixed inset-0 z-40 lg:hidden bg-background/20 backdrop-blur-sm"
+            className="fixed inset-0 z-40 lg:hidden animate-in fade-in duration-500"
             onClick={onClose}
           />
           {/* Mobil Rightbar */}
-          <aside className="fixed right-0 top-0 h-full w-64 bg-background border-l border-border z-50 lg:hidden shadow-lg transform transition-transform duration-300 ease-in-out translate-x-0">
+          <aside className="fixed right-0 top-0 h-full w-64 bg-background border-l border-border z-50 lg:hidden shadow-lg transform transition-transform animate-in slide-in-from-right duration-500">
             <RightbarHeader onClose={onClose} isMobile />
             <RightbarContent />
           </aside>

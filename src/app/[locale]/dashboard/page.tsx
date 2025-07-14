@@ -10,18 +10,21 @@ import { weeklyMilkProduction, cowInventory } from "@/app/constants/chart-data";
 import { farmSuccessData } from "@/app/constants/farm-success";
 import Dropdown from "@/components/ui/dropdown";
 import SidebarLayout from "./components/SideBarLayout";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { useDashboardLayout } from "@/hooks/use-dashboard-layout";
 import { useChartLayout } from "@/hooks/use-chart-layout";
 import { DraggableContainer } from "@/components/ui/DraggableContainer";
 import { DraggableChartContainer } from "@/components/ui/DraggableChartContainer";
 import { DraggableAdditionalChartContainer } from "@/components/ui/DraggableAdditionalChartContainer";
 import clsx from "clsx";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function DashboardPage() {
-  const isMobile = useIsMobile();
-  const [isRightbarVisible, setIsRightbarVisible] = useState(!isMobile);
   const [selectedDate, setSelectedDate] = useState("Bugün");
+  const isMobile = useIsMobile();
+
+  // Desktop'ta açık, mobil/tablet'te kapalı
+  const [isRightbarOpen, setIsRightbarOpen] = useState(!isMobile);
+
   const { cards, updateCardOrder } = useDashboardLayout();
   const {
     chartSections,
@@ -30,34 +33,27 @@ export default function DashboardPage() {
     updateAdditionalChartSectionsOrder,
   } = useChartLayout();
 
-  // Mobil durumu değiştiğinde rightbar'ı güncelle
+  // Mobil durumu değiştiğinde rightbar durumunu güncelle
   useEffect(() => {
-    setIsRightbarVisible(!isMobile);
+    setIsRightbarOpen(!isMobile);
   }, [isMobile]);
 
-  const handleMenuClick = () => {
-    setIsRightbarVisible(!isRightbarVisible);
-  };
-
-  const handleRightbarClose = () => {
-    setIsRightbarVisible(false);
-  };
-
-  const handleNotificationClick = () => {
-    setIsRightbarVisible(true);
-  };
+  const toggleRightbar = () => setIsRightbarOpen(!isRightbarOpen);
 
   return (
     <SidebarLayout
       rightbar={
-        <Rightbar isVisible={isRightbarVisible} onClose={handleRightbarClose} />
+        <Rightbar
+          isVisible={isRightbarOpen}
+          onClose={() => setIsRightbarOpen(false)}
+        />
       }
-      isRightbarVisible={isRightbarVisible}
+      isRightbarVisible={isRightbarOpen}
     >
       <div className="flex flex-col flex-1 min-h-0">
         <Header
-          onMenuClick={handleMenuClick}
-          onNotificationClick={handleNotificationClick}
+          onMenuClick={toggleRightbar}
+          onNotificationClick={() => setIsRightbarOpen(true)}
         />
 
         <main className="flex-1 p-4 sm:p-4 lg:p-6 overflow-auto hide-scrollbar">
@@ -73,6 +69,7 @@ export default function DashboardPage() {
               onChange={setSelectedDate}
             />
           </div>
+
           {/* Draggable Container */}
           <DraggableContainer cards={cards} onCardsReorder={updateCardOrder} />
 

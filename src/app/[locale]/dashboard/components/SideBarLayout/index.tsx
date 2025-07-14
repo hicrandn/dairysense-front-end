@@ -41,27 +41,19 @@ export default function SidebarLayout({
   const locale = useLocale();
   const t = useTranslations("sidebar");
 
-  const handleNavigation = (path: string) => {
-    router.push(path);
-  };
+  const handleNavigation = (path: string) => router.push(path);
+  const toggleLanguageMenu = () => setIsLanguageOpen(!isLanguageOpen);
 
-  // Mevcut locale'e göre seçili dili belirle
-  const getCurrentLanguage = () => {
-    return locale === "tr" ? "TR" : "EN";
-  };
+  const getCurrentLanguage = () => (locale === "tr" ? "TR" : "EN");
 
   const languages = [
     { code: "TR", name: t("languages.tr"), locale: "tr" },
     { code: "EN", name: t("languages.en"), locale: "en" },
   ];
 
-  const toggleLanguageMenu = () => {
-    setIsLanguageOpen(!isLanguageOpen);
-  };
-
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex h-screen w-full ">
+      <div className="flex h-screen w-full">
         <Sidebar collapsible="icon">
           {/* Header - Logo */}
           <SidebarHeader className="data-[collapsed=true]:hidden">
@@ -124,9 +116,9 @@ export default function SidebarLayout({
 
           {/* Footer - User and Language Selection */}
           <SidebarFooter>
-            <div className="space-y-3 ">
+            <div className="space-y-3">
               {/* Language Selector */}
-              <div className="relative ">
+              <div className="relative">
                 <button
                   onClick={toggleLanguageMenu}
                   className="flex items-center gap-2 w-full px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors group"
@@ -183,7 +175,7 @@ export default function SidebarLayout({
               </div>
 
               {/* User Profile */}
-              <div className="flex items-center gap-3 pb-3 rounded-lg hover:bg-gray-50 transition-colors ">
+              <div className="flex items-center gap-3 pb-3 rounded-lg hover:bg-gray-50 transition-colors">
                 <Avatar className="w-8 h-8">
                   <AvatarImage src="https://github.com/shadcn.png" />
                   <AvatarFallback>FA</AvatarFallback>
@@ -192,7 +184,7 @@ export default function SidebarLayout({
                   <span className="text-sm font-medium text-gray-900 truncate md:inline">
                     Vet. Furkan Acar
                   </span>
-                  <span className="text-xs text-gray-500  md:inline">
+                  <span className="text-xs text-gray-500 md:inline">
                     Veteriner Hekim
                   </span>
                 </div>
