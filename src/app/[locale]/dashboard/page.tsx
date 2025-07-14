@@ -60,7 +60,7 @@ export default function DashboardPage() {
           onNotificationClick={handleNotificationClick}
         />
 
-        <main className="flex-1 p-4 sm:p-4 lg:p-6 overflow-auto">
+        <main className="flex-1 p-4 sm:p-4 lg:p-6 overflow-auto hide-scrollbar">
           <div className="flex items-center justify-between mb-4 lg:mb-6">
             <div>
               <h2 className="text-xl lg:text-xl font-bold text-gray-900">

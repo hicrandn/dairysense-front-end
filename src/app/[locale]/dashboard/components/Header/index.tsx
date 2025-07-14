@@ -51,10 +51,10 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
     <header className="h-16 flex items-center justify-between px-2 md:px-4 bg-white border-b relative z-20 w-full flex-shrink-0">
       {/* Sol kısım - Sadece ikon ve breadcrumb */}
       <div className="flex items-center gap-2 flex-shrink-0 min-w-0">
-        {/* Mobil menü butonu */}
+        {/* Mobil menü butonu - Sidebar trigger */}
         {isMobile && (
           <button
-            onClick={onNotificationClick}
+            onClick={toggleSidebar}
             className="p-2 hover:bg-gray-100 rounded-md transition-colors sm:hidden"
           >
             <Menu className="w-5 h-5 text-gray-500" />

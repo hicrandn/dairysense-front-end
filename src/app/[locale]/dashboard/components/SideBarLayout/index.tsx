@@ -159,11 +159,12 @@ export default function SidebarLayout({
                         href="/dashboard"
                         locale={language.locale}
                         onClick={() => setIsLanguageOpen(false)}
-                        className={`flex items-center gap-2 w-full text-left px-3 py-2 text-sm hover:bg-blue-50 transition ${
+                        className={clsx(
+                          "flex items-center gap-2 w-full text-left px-3 py-2 text-sm hover:bg-blue-50 transition",
                           getCurrentLanguage() === language.code
                             ? "bg-blue-100 text-blue-700 font-medium"
                             : "text-gray-700"
-                        }`}
+                        )}
                       >
                         <ReactCountryFlag
                           countryCode={language.locale === "tr" ? "TR" : "US"}
@@ -182,16 +183,16 @@ export default function SidebarLayout({
               </div>
 
               {/* User Profile */}
-              <div className="flex items-center gap-3 pb-3 rounded-lg hover:bg-gray-50 transition-colors">
+              <div className="flex items-center gap-3 pb-3 rounded-lg hover:bg-gray-50 transition-colors ">
                 <Avatar className="w-8 h-8">
                   <AvatarImage src="https://github.com/shadcn.png" />
                   <AvatarFallback>FA</AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col flex-1 min-w-0">
-                  <span className="text-sm font-medium text-gray-900 truncate hidden md:inline">
+                  <span className="text-sm font-medium text-gray-900 truncate md:inline">
                     Vet. Furkan Acar
                   </span>
-                  <span className="text-xs text-gray-500 hidden md:inline">
+                  <span className="text-xs text-gray-500  md:inline">
                     Veteriner Hekim
                   </span>
                 </div>
