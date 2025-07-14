@@ -11,7 +11,6 @@ import { farmSuccessData } from "@/app/constants/farm-success";
 import Dropdown from "@/components/ui/dropdown";
 import SidebarLayout from "./components/SideBarLayout";
 import { useDashboardLayout } from "@/hooks/use-dashboard-layout";
-import { useChartLayout } from "@/hooks/use-chart-layout";
 import { DraggableContainer } from "./components/DraggableComponents/DraggableContainer";
 import { DraggableChartContainer } from "./components/DraggableComponents/DraggableChartContainer";
 import { DraggableAdditionalChartContainer } from "./components/DraggableComponents/DraggableAdditionalChartContainer";
@@ -30,13 +29,14 @@ export default function DashboardPage() {
     setIsRightbarOpen(!isMobile);
   }, [isMobile]);
 
-  const { cards, updateCardOrder } = useDashboardLayout();
   const {
+    cards,
     chartSections,
     additionalChartSections,
+    updateCardOrder,
     updateChartSectionsOrder,
     updateAdditionalChartSectionsOrder,
-  } = useChartLayout();
+  } = useDashboardLayout();
 
   const toggleRightbar = () => setIsRightbarOpen(!isRightbarOpen);
   const closeRightbar = () => setIsRightbarOpen(false);

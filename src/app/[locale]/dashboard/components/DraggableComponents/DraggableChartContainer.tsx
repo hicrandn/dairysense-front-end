@@ -18,7 +18,7 @@ import {
   sortableKeyboardCoordinates,
   rectSortingStrategy,
 } from "@dnd-kit/sortable";
-import { ChartSection } from "@/hooks/use-chart-layout";
+import { ChartSection } from "@/hooks/use-dashboard-layout";
 import { DraggableChartSection } from "./DraggableChartSection";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
