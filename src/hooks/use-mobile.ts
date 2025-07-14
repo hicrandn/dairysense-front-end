@@ -4,14 +4,9 @@ import { useState, useEffect } from "react";
 const TABLET_BREAKPOINT = 1024; // lg breakpoint
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.innerWidth < TABLET_BREAKPOINT; // Tablet ve mobil için
-  });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
     const checkMobile = () =>
       setIsMobile(window.innerWidth < TABLET_BREAKPOINT);
 

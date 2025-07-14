@@ -4,7 +4,12 @@ import React from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import clsx from "clsx";
-import { Card, CardContent, CardHeader, CardTitle } from "./card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../../../../components/ui/card";
 import { ChartSection } from "@/hooks/use-chart-layout";
 
 interface DraggableChartSectionProps {

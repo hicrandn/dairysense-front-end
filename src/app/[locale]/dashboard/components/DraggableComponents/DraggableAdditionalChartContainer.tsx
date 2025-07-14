@@ -18,22 +18,22 @@ import {
   sortableKeyboardCoordinates,
   rectSortingStrategy,
 } from "@dnd-kit/sortable";
-import { ChartSection } from "@/hooks/use-chart-layout";
-import { DraggableChartSection } from "@/components/ui/DraggableChartSection";
+import { AdditionalChartSection } from "@/hooks/use-chart-layout";
+import { DraggableAdditionalChartSection } from "./DraggableAdditionalChartSection";
 import { useState, useEffect } from "react";
-import clsx from "clsx";
 
-interface DraggableChartContainerProps {
-  sections: ChartSection[];
-  onSectionsReorder: (newSections: ChartSection[]) => void;
-  chartComponent: React.ReactNode;
-  successComponent: React.ReactNode;
+interface DraggableAdditionalChartContainerProps {
+  sections: AdditionalChartSection[];
+  onSectionsReorder: (newSections: AdditionalChartSection[]) => void;
+  barChartComponent: React.ReactNode;
+  pieChartComponent: React.ReactNode;
 }
 
-export const DraggableChartContainer: React.FC<
-  DraggableChartContainerProps
-> = ({ sections, onSectionsReorder, chartComponent, successComponent }) => {
-  const [activeSection, setActiveSection] = useState<ChartSection | null>(null);
+export const DraggableAdditionalChartContainer: React.FC<
+  DraggableAdditionalChartContainerProps
+> = ({ sections, onSectionsReorder, barChartComponent, pieChartComponent }) => {
+  const [activeSection, setActiveSection] =
+    useState<AdditionalChartSection | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -75,20 +75,16 @@ export const DraggableChartContainer: React.FC<
   // SSR sırasında basit grid göster
   if (!isMounted) {
     return (
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-6 mb-6 lg:mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 lg:mb-8">
         {sections.map((section) => (
           <div
             key={section.id}
-            className={clsx(
-              "rounded-xl shadow-sm p-4 flex flex-col h-full bg-gray-100",
-              {
-                "col-span-1 xl:col-span-2": section.type === "chart",
-                "col-span-1": section.type !== "chart",
-              }
-            )}
+            className="rounded-xl shadow-sm p-4 flex flex-col h-full bg-gray-100"
           >
             <div className="flex-1">
-              {section.type === "chart" ? chartComponent : successComponent}
+              {section.type === "barChart"
+                ? barChartComponent
+                : pieChartComponent}
             </div>
           </div>
         ))}
@@ -107,13 +103,13 @@ export const DraggableChartContainer: React.FC<
         items={sections.map((section) => section.id)}
         strategy={rectSortingStrategy}
       >
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 xl:gap-6 mb-6 lg:mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 lg:mb-8">
           {sections.map((section) => (
-            <DraggableChartSection
+            <DraggableAdditionalChartSection
               key={section.id}
               section={section}
-              chartComponent={chartComponent}
-              successComponent={successComponent}
+              barChartComponent={barChartComponent}
+              pieChartComponent={pieChartComponent}
             />
           ))}
         </div>
@@ -122,10 +118,10 @@ export const DraggableChartContainer: React.FC<
       <DragOverlay>
         {activeSection ? (
           <div className="transform rotate-3 scale-105 shadow-2xl">
-            <DraggableChartSection
+            <DraggableAdditionalChartSection
               section={activeSection}
-              chartComponent={chartComponent}
-              successComponent={successComponent}
+              barChartComponent={barChartComponent}
+              pieChartComponent={pieChartComponent}
             />
           </div>
         ) : null}

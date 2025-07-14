@@ -307,7 +307,7 @@ export default function Rightbar({ isVisible = true, onClose }: RightbarProps) {
       {/* Desktop Rightbar */}
       <aside
         className={clsx(
-          "hidden lg:block fixed right-0 top-0 h-screen bg-background border-l border-border w-64 z-30 transform transition-transform duration-300 ease-in-out",
+          "hidden lg:block fixed right-0 top-0 h-screen bg-background border-l w-64 z-30 transform transition-transform duration-300 ease-in-out",
           isVisible ? "translate-x-0" : "translate-x-full"
         )}
       >
@@ -319,12 +319,9 @@ export default function Rightbar({ isVisible = true, onClose }: RightbarProps) {
       {isVisible && (
         <>
           {/* Overlay */}
-          <div
-            className="fixed inset-0 z-40 lg:hidden animate-in fade-in duration-500"
-            onClick={onClose}
-          />
+          <div className="fixed inset-0 z-40 lg:hidden " onClick={onClose} />
           {/* Mobil Rightbar */}
-          <aside className="fixed right-0 top-0 h-full w-64 bg-background border-l border-border z-50 lg:hidden shadow-lg transform transition-transform animate-in slide-in-from-right duration-500">
+          <aside className="fixed right-0 top-0 h-full w-64 bg-background border-l border-border z-50 lg:hidden shadow-lg animate-in slide-in-from-right duration-500">
             <RightbarHeader onClose={onClose} isMobile />
             <RightbarContent />
           </aside>

@@ -17,11 +17,10 @@ import WeatherWidget from "@/app/[locale]/dashboard/components/WeatherWidget";
 import { useSidebar } from "@/components/ui/sidebar";
 
 interface HeaderProps {
-  onNotificationClick?: () => void;
-  onMenuClick?: () => void;
+  onAction?: () => void;
 }
 
-const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
+const Header = ({ onAction }: HeaderProps) => {
   const isMobile = useIsMobile();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isWeatherOpen, setIsWeatherOpen] = useState(false);
@@ -146,14 +145,14 @@ const Header = ({ onNotificationClick, onMenuClick }: HeaderProps) => {
         </button>
         {/* Bildirimler - her zaman görünür */}
         <button
-          onClick={onNotificationClick}
+          onClick={onAction}
           className="p-2 hover:bg-gray-100 rounded-md transition-colors duration-200"
         >
           <Bell className="w-5 h-5 text-gray-500" />
         </button>
         {/* Layout ikonu - sadece masaüstünde görünür */}
         <button
-          onClick={onMenuClick}
+          onClick={onAction}
           className="p-2 hover:bg-gray-100 rounded-md transition-colors hidden sm:inline-flex"
         >
           <PanelLeftDashed className="w-5 h-5 text-gray-500" />

@@ -1,20 +1,20 @@
 "use client";
 import Rightbar from "./components/Rightbar";
 import Header from "./components/Header";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import Chart from "@/components/ui/Linechart";
-import BarChart from "@/components/ui/BarChart";
-import PieChart from "@/components/ui/PieChart";
+import Chart from "./components/Charts/Linechart";
+import BarChart from "./components/Charts/BarChart";
+import PieChart from "./components/Charts/PieChart";
 import { weeklyMilkProduction, cowInventory } from "@/app/constants/chart-data";
 import { farmSuccessData } from "@/app/constants/farm-success";
 import Dropdown from "@/components/ui/dropdown";
 import SidebarLayout from "./components/SideBarLayout";
 import { useDashboardLayout } from "@/hooks/use-dashboard-layout";
 import { useChartLayout } from "@/hooks/use-chart-layout";
-import { DraggableContainer } from "@/components/ui/DraggableContainer";
-import { DraggableChartContainer } from "@/components/ui/DraggableChartContainer";
-import { DraggableAdditionalChartContainer } from "@/components/ui/DraggableAdditionalChartContainer";
+import { DraggableContainer } from "./components/DraggableComponents/DraggableContainer";
+import { DraggableChartContainer } from "./components/DraggableComponents/DraggableChartContainer";
+import { DraggableAdditionalChartContainer } from "./components/DraggableComponents/DraggableAdditionalChartContainer";
 import clsx from "clsx";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -22,7 +22,7 @@ export default function DashboardPage() {
   const [selectedDate, setSelectedDate] = useState("Bugün");
   const isMobile = useIsMobile();
 
-  // Desktop'ta açık, mobil/tablet'te kapalı
+  // Rightbar durumu - mobilde kapalı, desktop'ta açık
   const [isRightbarOpen, setIsRightbarOpen] = useState(!isMobile);
 
   const { cards, updateCardOrder } = useDashboardLayout();
@@ -33,28 +33,13 @@ export default function DashboardPage() {
     updateAdditionalChartSectionsOrder,
   } = useChartLayout();
 
-  // Mobil durumu değiştiğinde rightbar durumunu güncelle
-  useEffect(() => {
-    setIsRightbarOpen(!isMobile);
-  }, [isMobile]);
-
   const toggleRightbar = () => setIsRightbarOpen(!isRightbarOpen);
+  const closeRightbar = () => setIsRightbarOpen(false);
 
   return (
-    <SidebarLayout
-      rightbar={
-        <Rightbar
-          isVisible={isRightbarOpen}
-          onClose={() => setIsRightbarOpen(false)}
-        />
-      }
-      isRightbarVisible={isRightbarOpen}
-    >
+    <SidebarLayout rightbar={<Rightbar onClose={closeRightbar} />}>
       <div className="flex flex-col flex-1 min-h-0">
-        <Header
-          onMenuClick={toggleRightbar}
-          onNotificationClick={() => setIsRightbarOpen(true)}
-        />
+        <Header onAction={toggleRightbar} />
 
         <main className="flex-1 p-4 sm:p-4 lg:p-6 overflow-auto hide-scrollbar">
           <div className="flex items-center justify-between mb-4 lg:mb-6">
