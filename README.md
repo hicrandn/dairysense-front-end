@@ -1,4 +1,5 @@
 # DairySense Frontend 🐄📊
+Uygulama `https://dairysense-front-end.vercel.app/tr/dashboard` adresinde çalışacaktır.
 
 
 https://github.com/user-attachments/assets/00550113-8051-44d3-8aac-d02e4f3cae71
@@ -63,9 +64,6 @@ Modern ve interaktif bir süt çiftliği yönetim dashboard'u. Bu proje, çiftli
 ## 📁 Proje Yapısı
 
 ````
-
-Uygulama `https://dairysense-front-end.vercel.app/tr/dashboard` adresinde çalışacaktır.
-
 
 ## 🎯 Kullanım
 
