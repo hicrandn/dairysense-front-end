@@ -1,5 +1,10 @@
 # DairySense Frontend 🐄📊
 
+
+https://github.com/user-attachments/assets/00550113-8051-44d3-8aac-d02e4f3cae71
+
+
+
 Modern ve interaktif bir süt çiftliği yönetim dashboard'u. Bu proje, çiftlik verilerini görselleştirmek ve yönetmek için geliştirilmiş kapsamlı bir web uygulamasıdır.
 
 ## 🚀 Özellikler
@@ -59,32 +64,8 @@ Modern ve interaktif bir süt çiftliği yönetim dashboard'u. Bu proje, çiftli
 
 ````
 
+Uygulama `https://dairysense-front-end.vercel.app/tr/dashboard` adresinde çalışacaktır.
 
-
-### Geliştirme Sunucusu
-
-```bash
-# Geliştirme sunucusunu başlatın
-yarn dev
-# veya
-npm run dev
-````
-
-Uygulama `https://dairysense.com` adresinde çalışacaktır.
-
-### Build ve Production
-
-```bash
-# Production build
-yarn build
-# veya
-npm run build
-
-# Production sunucusunu başlatın
-yarn start
-# veya
-npm start
-```
 
 ## 🎯 Kullanım
 
